@@ -1,0 +1,65 @@
+020           G I T H U B  P A G E S  P R E R E Q U I S I T E S
+
+==========================================================================
+
+a. Prerequisites
+-----------------------------------
+
+This document contains prerequisites to build and deploy Material-Mkdocs 
+to Github Pages.
+
+==========================================================================
+(Github Pages Prerequisites V1.0.txt)      
+------------------------------------------------------------------      
+
+"GSG-Proc:"  = "GuruServerGroup Prerequisites"
+
+------------------------------------------------------------------
+
+This document is part of this GitHub repo: 
+
+  https://github.com/RHowland/gsg-gh-pages-site01.git
+
+------------------------------------------------------------------
+
+Material mkdocs homepage:
+
+  https://squidfunk.github.io/mkdocs-material/getting-started/
+
+Material mkdocs homepage build file for GitHub Pages deployment:
+
+  https://squidfunk.github.io/mkdocs-material/publishing-your-site/
+
+--------------------------------------------------------------------
+
+Document ID: (999)                                       
+                                                                                  
+2025-10-20                                               
+Created by: Rene Nel                                   
+
+PURPOSE:                                                   
+--------
+The purpose of this document is to define the prerequisites needed to 
+build and deploy Material-Mkdocs to GitHub Pages.
+
+PREREQUISITES
+-------------                                             
+These are the prerequistes you'll follow 
+to deploy Material-Mkdocs to Github Pages:
+
+- 010 Material-MkDocs Prerequisites.txt
+
+- 015 Material-MkDocs Install Guide.txt
+
+- Github Account with administrator privileges
+
+- ci.yml build file
+
+
+
+
+(end of procedure heading requirements.)
+
+
+
+##########################################################################

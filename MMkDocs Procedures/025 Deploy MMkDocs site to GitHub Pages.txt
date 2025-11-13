@@ -1,0 +1,123 @@
+GSG-Proc - D E P L O Y  M M k D O C S S I T E  T O  G I T H U B P A G E S v1.0.txt
+-------------------------------------------------------------
+
+--------------------------------
+
+The purpose of this document is to provide a step-by-step list of all 
+of the operations that are needed to configure and deploy MMkDocs site 
+to GitHub Pages. 
+
+--------------------------------
+"GSG-Proc:"  = "GuruServerGroup Procedure"
+
+--------------------------------
+This document is part of this GitHub repo: 
+
+  https://github.com/RHowland/gsg-gh-pages-site01.git
+
+
+-------------------------------
+
+Supporting GitHub repo for this video and blog article: 
+  
+  https://github.com/james-willett/material-mkdocs-youtube-2024
+
+Material mkdocs homepage:
+
+  https://squidfunk.github.io/mkdocs-material/getting-started/
+
+Material mkdocs homepage build file for GitHub Pages deployment:
+
+  https://squidfunk.github.io/mkdocs-material/publishing-your-site/
+
+=====================================================================
+
+             Deploy MMkDocs site to GitHub Pages
+
+=====================================================================
+---------------------------------------------------------------------
+025 Deploy MMkDocs site to GitHub Pages  
+
+    a. Create a new directory 
+
+    Windows 10 command:
+>   mkdir 'deployToGithub' && cd 'deployToGithub'
+
+
+    Expected Output:
+
+    b. Clone private repository 'gsg-gh-pages-site01'
+
+    Windows 10 command:
+>   git clone https://github.com/RHowland/gsg-gh-pages-site01.git
+
+    Expected Output:
+    
+    c. Remove git file so directory can be reinitialised.
+
+    Windows 10 command:
+>   rm -r git
+
+    Expected Output: 
+
+    d. initialise new git repo
+
+    Windows 10 validation command:
+>   git init 
+
+    Expected Output:
+
+    e. Create and edit build file for github deployment
+  
+     Windows 10 validation command:
+
+>   notepad '.github/workflows/ci.yml' 
+   (copy and paste build file here from
+    https://squidfunk.github.io/mkdocs-material/publishing-your-site/)
+
+    Expected Output:
+
+    f. 
+
+>   git add . && git commit -m 'first build and deploy commit' 
+
+>   notepad .github/workflows/ci.yml 
+
+   (copy and paste build file here from
+    https://squidfunk.github.io/mkdocs-material/publishing-your-site/)
+
+    Expected Output:
+   
+---------------------------------------------------------------------
+010 (operation description)
+
+     Windows 10 validation command:
+>   git remote add origin https://github.com/Rhowland/'test-site-01' 
+
+    Expected Output:
+
+    Windows 10 command:
+>   git push -u origin main
+
+    Expected Output:
+
+    
+> follow the instructions on the youtube video 
+    https://youtu.be/hCOvwNeaC8Q
+---------------------------------------------------------------------
+
+Appendix A
+
+---------------------------------------------------------------------
+  
+
+  
+
+---------------------------------------------------------------------
+(End of Document)
+
+
+==========================================================================
+
+
+##########################################################################

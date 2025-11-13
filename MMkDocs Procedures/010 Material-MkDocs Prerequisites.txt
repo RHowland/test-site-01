@@ -1,0 +1,186 @@
+010           M A T E R I A L - M k D O C S  P R E R E Q U I S I T E S
+
+==========================================================================
+
+a. Prerequisites
+-----------------------------------
+
+This document contains prerequisites to build and deploy Material-Mkdocs.
+
+==========================================================================
+(Material-Mkdocs Prerequisites V1.0.txt)
+      
+------------------------------------------------------------------      
+"GSG-Proc:"  = "GuruServerGroup Prerequisites"
+
+------------------------------------------------------------------
+
+This document is part of this GitHub repo: 
+
+  https://github.com/RHowland/gsg-gh-pages-site01.git
+
+------------------------------------------------------------------
+
+Supporting Youtube video and corresponding blog article:
+
+  https://jameswillett.dev/getting-started-with-material-for-mkdocs/
+
+  https://www.youtube.com/watch?v=xlABhbnNrfI&t=572s
+ 
+Supporting GitHub repo for this video and blog article: 
+  
+  https://github.com/james-willett/material-mkdocs-youtube-2024
+
+Material mkdocs homepage:
+
+  https://squidfunk.github.io/mkdocs-material/getting-started/
+
+--------------------------------------------------------------------
+
+Document ID: (999)                                       
+                                                                                  
+2025-10-20                                               
+Created by: Rene Nel                                   
+
+PURPOSE:                                                   
+--------
+The purpose of this document is to define the prerequisites needed to 
+build and configure Material-Mkdocs
+
+PREREQUISITES
+-------------                                             
+These are the prerequistes you’ll need to have installed 
+to build and deploy Material-Mkdocs:
+
+-  Windows 10 Pro
+
+-  Powershell in administrator privilages
+
+-  Chocolately
+
+-  Python
+  
+-  Visual Studio Code 1.105.1
+
+-  Git 2.51.2
+
+-  Notepadplusplus 
+
+##########################################################################
+
+==========================================================================
+03                  W O R K S T E P    S E C T I O N                  
+
+==========================================================================
+
+a. Material-MkDocs Prerequisites 
+---------------------------
+
+This section contains installation instructions for the prerequisites to 
+build and deploy Material-Mkdocs. 
+
+==========================================================================
+WorkStep 035 
+Install Python
+----------------------------------------------
+websvr01 -   UserName: 
++++++++++++++++++++++++++++++++++++++
+
+    a. Install Chocolately 
+
+>   Set-ExecutionPolicy Bypass -Scope Process                       
+    ----------------------------------
+
+    Expected Response: none
+	
+>   Set-ExecutionPolicy Bypass -Scope Process -Force; 
+    [System.Net.ServicePointManager]::
+	SecurityProtocol = [System.Net.ServicePointManager]::
+	SecurityProtocol -bor 3072; 
+	 iex ((New-Object System.Net.WebClient).DownloadString
+    ('https://community.chocolatey.org/install.ps1'))	
+	
+	Please note, the command has to be pasted in a single line.
+	To do so paste and copy it via a text editor before pasting it into
+	powershell.
+	
+	b. Confirm Chocolately installation was successful
+
+>   choco --version                       
+    ----------------------------------
+	
+	Expected Response: 2.5.0
+	
+	This version may differ slightly on your system.
+	
+	c. Install Python 
+
+>   choco install python -y                        
+    ----------------------------------
+
+    Expected Response: none
+	
+	d. Confirm Python installation was successful
+    
+>   python --version                       
+    ----------------------------------
+	
+	Expected Response: Python 3.13.7
+
+	This version may differ slightly on your system.
+
+    e. Install vscode:
+
+>   choco install vscode -y          
+    -----------------------------------------------
+
+    Expected Response: Installing the following packages:
+    vscode
+    By installing, you accept licenses for the packages.
+    Downloading package from source 
+	'https://community.chocolatey.org/api/v2/'
+    Progress: Downloading vscode.install 1.105.1... 100%
+
+    f. Confirm vscode installation was successful 
+
+>   code --version                       
+    ----------------------------------
+	
+	note that 'v' is left out when calling vscode from powershell 
+	after chocolatey installation
+	
+	Expected Response: 1.105.1
+    ....x64
+
+    g. Install git:
+
+>   choco install git -y
+    --------------------------------------
+
+    Expected Response: 
+	
+	h. Confirm git installation was successful
+
+>   git --version 
+    --------------------------------------
+
+    Expected Response: git version 2.48.1.windows.1
+	
+	i. Install notepad++
+
+>   choco install notepadplusplus -y
+    --------------------------------------
+
+    Expected Response: 
+	
+	h. Confirm git installation was successful
+
+>   notepad++ 
+    --------------------------------------
+
+    Expected Response: the notepadplusplus gui will open
+	
+	
+
+
+==========================================================================

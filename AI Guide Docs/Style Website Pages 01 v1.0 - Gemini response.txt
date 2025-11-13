@@ -1,0 +1,120 @@
+Style Website Pages 01 v1.0 - Gemini response.txt
+-------------------------------------------------
+
+Gemini Response: 
+----------------
+
+
+MkDocs Custom CSS Styles: A Guide for "Hosting Services" Project Documentation
+
+1. Introduction
+This document provides custom CSS specifications to style a Material for MkDocs website for the "Hosting Services" project. These styles are designed to be applied on top of the default Material for MkDocs theme, ensuring a consistent look and feel while adhering to specific branding requirements for both light and dark modes.
+
+2. Global Website Specifications
+The following CSS will define the global layout and color variables for the website.
+
+Website Max Width: The main content container will be limited to a maximum width of 1200px to improve readability on large screens. The content will be centered.
+
+Header and Footer Banners: Both the header and footer banners will have a fixed height of 24px and a full width of 100%.
+
+Fonts: The font for the header and footer text will be Roboto with a weight of 500.
+
+3. Color Palette Variables
+To facilitate easy theme switching, the colors are defined using CSS variables within :root.
+
+:root {
+  /* Light Mode Colors */
+  --md-color-viewport-background: #c0c0be; /* light gray */
+  --md-color-page-background: #d5d4d4; /* very light gray */
+  --md-color-text-primary: #88888a; /* med dark gray */
+  --md-color-header-footer-background: #e1e1e1; /* med dark blue */
+  --md-color-header-footer-text: #88888a; /* med dark gray */
+  --md-color-border: #88888a; /* med dark gray */
+  --md-color-button-border: #88888a; /* med dark gray */
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-color-viewport-background: #c0c0be; /* light gray */
+    --md-color-page-background: #88888a; /* med dark gray */
+    --md-color-text-primary: #d5d4d4; /* very light gray */
+    --md-color-header-footer-background: #e1e1e1; /* med dark blue */
+    --md-color-header-footer-text: #d5d4d4; /* very light gray */
+    --md-color-border: #000000; /* black */
+    --md-color-button-border: #000000; /* black */
+  }
+}
+
+4. Custom CSS Rules
+The following CSS rules apply the defined variables to the appropriate Material for MkDocs elements.
+
+/* Apply viewport background color */
+body {
+  background-color: var(--md-color-viewport-background);
+}
+
+/* Limit the main content width and center it */
+.md-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--md-color-border);
+  background-color: var(--md-color-page-background);
+  color: var(--md-color-text-primary);
+}
+
+/* Style the header banner */
+.md-header {
+  background-color: var(--md-color-header-footer-background);
+  height: 24px;
+  width: 100%;
+}
+
+/* Style the header text */
+.md-header-nav__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: var(--md-color-header-footer-text);
+}
+
+/* Style the footer banner */
+.md-footer {
+  background-color: var(--md-color-header-footer-background);
+  height: 24px;
+  width: 100%;
+  border-top: 1px solid var(--md-color-border);
+}
+
+/* Style the footer text */
+.md-footer-meta__inner {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: var(--md-color-header-footer-text);
+}
+
+/* Style button borders */
+.md-button, .md-button--primary {
+  border: 1px solid var(--md-color-button-border);
+}
+
+5. Instructions for Implementation
+To apply these styles to your Material for MkDocs project, please follow these steps:
+
+Create a CSS file: Save the entire CSS block from "Custom CSS Rules" into a new file named extra.css.
+
+Place the file: Place this extra.css file within your docs directory. A common practice is to create a subdirectory, such as docs/css/extra.css.
+
+Update mkdocs.yml: Open your mkdocs.yml configuration file and add the following lines to reference your new stylesheet. Ensure the extra_css path is correct.
+
+# mkdocs.yml
+
+theme:
+  name: material
+  
+extra_css:
+  - css/extra.css
+
+Build the project: Run the mkdocs build command to apply the new styles to your website.
+
+Please ensure the mkdocs.yml file is properly formatted and that the file path in extra_css is correct.

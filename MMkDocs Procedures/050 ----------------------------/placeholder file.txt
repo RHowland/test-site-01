@@ -1,0 +1,10 @@
+placeholder file.txt
+
+If a folder does not contain one or more files, then the 
+Windows version of Git will not push this folder to GitHub.  
+
+After doing a git push operation, when you look in the GitHub 
+repo, the empty folder will not be there. 
+
+So, I have created this placeholder file to force the local 
+Git program to properly push everything to GitHub.

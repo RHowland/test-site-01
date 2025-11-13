@@ -1,0 +1,495 @@
+Site Structure with Placeholder Files - Gemini.txt
+--------------------------------------------------
+
+
+
+Material for MkDocs Site Structure
+Here is a prototype site structure for your Material for MkDocs project, including the mkdocs.yml file and placeholder .txt files outlining the content for each page. This structure is designed to follow your business plan and then detail the 5-server group configuration. The structure is based on a clean, hierarchical organization to guide you in building out the content.
+
+Mkdocs.yml Configuration
+This YAML configuration sets up the basic site, including the title, theme, and navigation. The navigation (nav) section is the core of your site's structure, defining the order and nesting of your pages.
+
+YAML
+
+site_name: GuruServerGroup.com
+site_url: https://www.guruservergroup.com
+site_description: A business plan and technical documentation for a 5-server cluster.
+site_author: [Your Name]
+
+theme:
+  name: material
+  custom_dir: docs/theme
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.expand
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotate
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - def_list
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: " "
+
+plugins:
+  - search
+  - git-revision-date-localized
+
+nav:
+  - 'Home': index.md
+  - 'Business Plan':
+    - 'Executive Summary': business-plan/executive-summary.md
+    - 'Company Description': business-plan/company-description.md
+    - 'Services and Products': business-plan/services-and-products.md
+    - 'Market Analysis':
+      - 'Industry Overview': business-plan/market-analysis/industry-overview.md
+      - 'Target Market': business-plan/market-analysis/target-market.md
+      - 'Competitive Analysis': business-plan/market-analysis/competitive-analysis.md
+    - 'Marketing and Sales Strategy': business-plan/marketing-and-sales.md
+    - 'Management Team': business-plan/management-team.md
+    - 'Financial Plan':
+      - 'Startup Costs': business-plan/financial-plan/startup-costs.md
+      - 'Financial Projections': business-plan/financial-plan/financial-projections.md
+      - 'Funding Request': business-plan/financial-plan/funding-request.md
+  - 'Technical Documentation':
+    - 'Architecture Overview': technical-docs/architecture-overview.md
+    - 'Server Specifications':
+      - 'Web Servers (wbsv01, wbsv02)': technical-docs/server-specs/web-servers.md
+      - 'Database Servers (dbsv01, dbsv02)': technical-docs/server-specs/db-servers.md
+      - 'Manager Server (mgsv01)': technical-docs/server-specs/manager-server.md
+    - 'Software Stack':
+      - 'Load Balancing (HAProxy)': technical-docs/software-stack/haproxy.md
+      - 'Web Services (Nginx, Node.js, PM2)': technical-docs/software-stack/web-services.md
+      - 'Database Services (Postgresql, PgBouncer, Repmgr)': technical-docs/software-stack/database-services.md
+      - 'Cluster Management (Ansible, NetData)': technical-docs/software-stack/cluster-management.md
+    - 'Network Configuration':
+      - 'IP Addressing': technical-docs/network-config/ip-addressing.md
+      - 'DNS and Domains': technical-docs/network-config/dns.md
+      - 'Firewall Rules': technical-docs/network-config/firewall-rules.md
+    - 'Deployment and Maintenance':
+      - 'Continuous Integration/Continuous Deployment (CI/CD)': technical-docs/deployment-and-maintenance/ci-cd.md
+      - 'Backup and Recovery Strategy': technical-docs/deployment-and-maintenance/backup-recovery.md
+      - 'Monitoring and Alerting': technical-docs/deployment-and-maintenance/monitoring.md
+      - 'Disaster Recovery Plan': technical-docs/deployment-and-maintenance/disaster-recovery.md
+
+Folder and Placeholder Document Structure
+
+Below is the file structure and the content for each placeholder document. 
+This gives you a track to follow and it helps you maintain consistency as 
+you write your content.
+
+1. Root Directory
+
+index.md
+
+mkdocs.yml
+
+2. Business Plan Folder
+
+business-plan/
+
+executive-summary.md
+
+company-description.md
+
+services-and-products.md
+
+marketing-and-sales.md
+
+management-team.md
+
+market-analysis/
+
+industry-overview.md
+
+target-market.md
+
+competitive-analysis.md
+
+financial-plan/
+
+startup-costs.md
+
+financial-projections.md
+
+funding-request.md
+
+3. Technical Documentation Folder
+
+technical-docs/
+
+architecture-overview.md
+
+server-specs/
+
+web-servers.md
+
+db-servers.md
+
+manager-server.md
+
+software-stack/
+
+haproxy.md
+
+web-services.md
+
+database-services.md
+
+cluster-management.md
+
+network-config/
+
+ip-addressing.md
+
+dns.md
+
+firewall-rules.md
+
+deployment-and-maintenance/
+
+ci-cd.md
+
+backup-recovery.md
+
+monitoring.md
+
+disaster-recovery.md
+
+Placeholder Document Content
+Each .txt file below provides an outline of the content you should write.
+
+docs/index.md
+
+# Welcome to GuruServerGroup.com
+
+This site provides a detailed **business plan** and **technical documentation** for our 5-server hosting cluster.
+
+* **Business Plan:** Outlines our company's mission, market strategy, and financial projections.
+* **Technical Documentation:** Details the architecture, software stack, and operational procedures for our server group.
+
+Use the navigation to explore the different sections.
+docs/business-plan/executive-summary.txt
+
+## **Executive Summary**
+
+Outline:
+* **Business Concept:** Briefly describe GuruServerGroup.com as a hosting provider for low-traffic Next.js websites.
+* **Mission Statement:** State the company's purpose and values.
+* **Target Market:** Identify the ideal customer (e.g., small businesses, startups, developers).
+* **Competitive Advantage:** Explain why customers should choose us (e.g., specialized architecture, high reliability for a low price, excellent support).
+* **Financial Highlights:** Summarize the key financial projections, including required funding and expected profitability.
+docs/business-plan/company-description.txt
+
+## **Company Description**
+
+Outline:
+* **Legal Structure:** State the legal name and structure of the business (e.g., Sole Proprietorship, LLC).
+* **History:** Provide a brief history of the company or the founders' relevant experience.
+* **Business Goals:** Detail the short-term and long-term goals.
+* **Core Values:** List the principles that guide the company's operations.
+docs/business-plan/services-and-products.txt
+
+## **Services and Products**
+
+Outline:
+* **Core Service:** Describe the hosting service for Next.js web applications, highlighting the underlying technology (the 5-server cluster).
+* **Additional Services:** Mention any other services, such as managed services, custom development, or consulting.
+* **Pricing Strategy:** Explain the pricing model (e.g., subscription tiers, pay-as-you-go).
+docs/business-plan/market-analysis/industry-overview.txt
+
+## **Industry Overview**
+
+Outline:
+* **Current Trends:** Describe the current state of the web hosting and cloud services market.
+* **Growth Potential:** Discuss the future growth of this market and the specific niche you are targeting.
+* **Industry Drivers:** Identify factors driving demand for your services (e.g., increasing number of small businesses needing online presence).
+docs/business-plan/market-analysis/target-market.txt
+
+## **Target Market**
+
+Outline:
+* **Demographics:** Describe the characteristics of your ideal customers (e.g., small e-commerce sites, portfolio websites, blogs).
+* **Customer Needs:** Explain what problems your target market faces and how your solution addresses them.
+* **Market Size:** Provide an estimate of the total addressable market.
+docs/business-plan/market-analysis/competitive-analysis.txt
+
+## **Competitive Analysis**
+
+Outline:
+* **Direct Competitors:** List and describe companies offering similar services (e.g., Vercel, Netlify, DigitalOcean).
+* **Indirect Competitors:** Mention companies offering related services.
+* **SWOT Analysis:** Conduct a Strengths, Weaknesses, Opportunities, and Threats analysis for GuruServerGroup.
+* **Our Advantage:** Reiterate what makes your offering unique and superior to the competition.
+docs/business-plan/marketing-and-sales.txt
+
+## **Marketing and Sales Strategy**
+
+Outline:
+* **Marketing Channels:** Describe the channels you will use to reach your target audience (e.g., content marketing, social media, paid advertising).
+* **Sales Process:** Detail the steps involved in acquiring a new customer.
+* **Branding:** Explain the brand identity and how it will be communicated.
+docs/business-plan/management-team.txt
+
+## **Management Team**
+
+Outline:
+* **Key Personnel:** Provide bios and relevant experience for the founding members.
+* **Organizational Structure:** Describe the roles and responsibilities of each team member.
+* **Advisors/Partners:** List any key advisors or strategic partners.
+docs/business-plan/financial-plan/startup-costs.txt
+
+## **Startup Costs**
+
+Outline:
+* **One-Time Expenses:** List all initial expenses (e.g., domain registration, legal fees, software licenses).
+* **Operational Expenses:** Detail the recurring monthly costs (e.g., server fees, software subscriptions, marketing budget).
+* **Cost Breakdown:** Present a clear table or chart of all estimated costs.
+docs/business-plan/financial-plan/financial-projections.txt
+
+## **Financial Projections**
+
+Outline:
+* **Revenue Forecast:** Project revenue for the first 1-3 years based on your pricing and customer acquisition strategy.
+* **Expense Projections:** Forecast monthly and yearly expenses.
+* **Profit and Loss Statement:** Provide a projected P&L statement.
+* **Break-Even Analysis:** Show the point at which the business will become profitable.
+docs/business-plan/financial-plan/funding-request.txt
+
+## **Funding Request**
+
+Outline:
+* **Required Amount:** State the total amount of funding needed.
+* **Use of Funds:** Explain exactly how the requested funds will be used (e.g., for hiring, marketing, infrastructure).
+* **Investment Return:** Describe the potential return for investors.
+docs/technical-docs/architecture-overview.txt
+
+## **Architecture Overview**
+
+Outline:
+* **High-Level Diagram:** Provide a visual diagram of the 5-server cluster.  This should show the flow of traffic from Cloudflare through HAProxy, to the web servers, and then to the database servers.
+* **Core Concepts:** Explain the key principles of the architecture: high availability, load balancing, and separation of concerns.
+* **Technology Stack:** Briefly list the key technologies used and their roles.
+* **Traffic Flow:** Describe the path of a typical web request, from the user's browser to the database and back.
+docs/technical-docs/server-specs/web-servers.txt
+
+## **Web Servers (wbsv01, wbsv02)**
+
+Outline:
+* **Server Role:** Explain the function of the web servers, which is to serve as the application hosts.
+* **Hardware Specifications:** Detail the CPU, RAM, and storage for each server.
+* **Software Stack:** List and describe the purpose of each application installed:
+    * **HAProxy:** Active/passive load balancing, TLS termination.
+    * **Nginx:** Reverse proxy for Node.js, static content serving.
+    * **Node.js:** Application runtime for Next.js.
+    * **PM2:** Process manager for Node.js and Nginx.
+    * **Lelastic:** Floating IP address management.
+docs/technical-docs/server-specs/db-servers.txt
+
+## **Database Servers (dbsv01, dbsv02)**
+
+Outline:
+* **Server Role:** Explain the function of these servers as the primary and secondary database hosts.
+* **Hardware Specifications:** Detail the CPU, RAM, and storage.
+* **Software Stack:** List and describe the purpose of each application installed:
+    * **Postgresql:** Primary database server.
+    * **PgBouncer:** Connection pooling to manage database connections.
+    * **Repmgr:** PostgreSQL replication and failover management.
+    * **Keepalived:** Manages the virtual IP address for the database cluster.
+docs/technical-docs/server-specs/manager-server.txt
+
+## **Manager Server (mgsv01)**
+
+Outline:
+* **Server Role:** Explain the manager server's role as the central hub for monitoring, automation, and management.
+* **Hardware Specifications:** Detail the CPU, RAM, and storage.
+* **Software Stack:** List and describe the purpose of each application installed:
+    * **Ansible:** Automation engine for configuration management and deployments.
+    * **NetData:** Real-time performance monitoring.
+    * **Nginx/Node.js:** For a simple sysadmin dashboard.
+    * **Repmgr (Witness mode):** Provides an independent third vote in case of a split-brain scenario.
+docs/technical-docs/software-stack/haproxy.txt
+
+## **HAProxy Configuration**
+
+Outline:
+* **General Purpose:** Explain how HAProxy acts as the primary entry point for web traffic on wbsv01 and wbsv02.
+* **Active/Passive Setup:** Detail the configuration for the active/passive failover with Lelastic.
+* **TLS/SSL:** Explain the TLS termination strategy at the origin server, which is HAProxy.
+* **Load Balancing:** Describe the **round-robin** algorithm and **cookie-based sticky sessions** for persistent user sessions.
+* **Health Checks:** Explain how HAProxy performs active health checks to ensure server availability, including the use of `inter`, `rise`, and `fall` parameters.
+* **Runtime API:** Detail the purpose and configuration of the HAProxy stats socket for dynamic management.
+* **Configuration Examples:** Provide example configuration snippets for both the web server and database server HAProxy instances.
+docs/technical-docs/software-stack/web-services.txt
+
+## **Web Services (Nginx, Node.js, PM2)**
+
+Outline:
+* **Nginx Role:** Explain how Nginx serves as a reverse proxy for the Node.js applications and handles static content.
+* **Node.js/Next.js:** Describe the role of Node.js as the runtime for the Next.js applications.
+* **PM2:** Explain how PM2 manages the Node.js and Nginx processes, ensuring they are always running and automatically restarted upon failure.
+* **Configuration Examples:** Provide configuration snippets for Nginx virtual hosts and a sample PM2 process file.
+docs/technical-docs/software-stack/database-services.txt
+
+## **Database Services (Postgresql, PgBouncer, Repmgr)**
+
+Outline:
+* **Postgresql:** Detail the setup of a master-replica Postgresql cluster.
+* **PgBouncer:** Explain the benefits of connection pooling for managing database connections, especially with multiple small applications.
+* **Repmgr:** Describe how Repmgr provides automated failover and simplifies the management of the master-replica cluster.
+* **HAProxy for Databases:** Explain the configuration of HAProxy on the web servers to provide a single TCP entry point to the database cluster and handle connection retries.
+docs/technical-docs/software-stack/cluster-management.txt
+
+## **Cluster Management (Ansible, NetData)**
+
+Outline:
+* **Ansible:** Explain how Ansible is used for idempotent configuration management and zero-downtime deployments across the 5 servers.
+* **NetData:** Describe the real-time monitoring capabilities of NetData, including its role in alerting and visualizing system performance.
+* **Management Dashboard:** Detail the simple dashboard created on the manager server using Nginx and Node.js for easy access to management tools.
+docs/technical-docs/network-config/ip-addressing.txt
+
+## **IP Addressing**
+
+Outline:
+* **Public IP Addresses:** List the public IP addresses for each server and their purpose (e.g., wbsv01, wbsv02, mgsv01).
+* **Private IP Addresses:** Detail the private network setup for inter-server communication.
+* **Floating/Elastic IP:** Explain how the Linode Lelastic app manages the shared public IP address for the web servers.
+docs/technical-docs/network-config/dns.txt
+
+## **DNS and Domains**
+
+Outline:
+* **DNS Records:** Detail the required DNS records (A, CNAME) in Cloudflare for the GuruServerGroup.com domain and client websites.
+* **Cloudflare Configuration:** Describe the Cloudflare settings for TLS encryption, DDoS protection, and CDN services.
+docs/technical-docs/network-config/firewall-rules.txt
+
+## **Firewall Rules**
+
+Outline:
+* **UFW (Uncomplicated Firewall):** Explain how UFW is used on each server to manage firewall rules.
+* **Required Ports:** List and explain the purpose of all open ports (e.g., SSH, HTTP, HTTPS, Postgresql).
+* **Security Best Practices:** Detail rules for restricting access to specific ports and using private IP addresses for internal communication.
+docs/technical-docs/deployment-and-maintenance/ci-cd.txt
+
+## **Continuous Integration/Continuous Deployment (CI/CD)**
+
+Outline:
+* **CI/CD Pipeline:** Describe the planned workflow for deploying a new application or updating an existing one.
+* **Tools:** Mention the tools used (e.g., Ansible, Git hooks).
+* **Deployment Steps:** Outline a step-by-step procedure for a zero-downtime deployment.
+docs/technical-docs/deployment-and-maintenance/backup-recovery.txt
+
+## **Backup and Recovery Strategy**
+
+Outline:
+* **Data to Backup:** Specify what data needs to be backed up (e.g., database backups, application code).
+* **Backup Method:** Describe the chosen method for backups (e.g., automated scripts, external service).
+* **Recovery Procedure:** Provide a step-by-step guide on how to restore from a backup.
+docs/technical-docs/deployment-and-maintenance/monitoring.txt
+
+## **Monitoring and Alerting**
+
+Outline:
+* **NetData:** Explain how NetData is configured on all servers to provide real-time metrics.
+* **Key Metrics:** List the key performance indicators (KPIs) to monitor (e.g., CPU, RAM, disk I/O, network traffic).
+* **Alerting:** Describe the alerting system and how it notifies administrators of potential issues.
+docs/technical-docs/deployment-and-maintenance/disaster-recovery.txt
+
+## **Disaster Recovery Plan**
+
+Outline:
+* **High-Level Plan:** Describe the overall strategy for recovering from a catastrophic failure (e.g., a server or data center outage).
+* **Failover Procedures:** Detail the steps for manual failover if automated systems fail.
+* **Roles and Responsibilities:** Assign roles and responsibilities for each part of the plan.
+Pros and Cons of This Response
+Pros:
+
+Provides a clear roadmap: The detailed mkdocs.yml and placeholder files give you a solid starting point and a clear structure to follow.
+
+Hierarchical organization: The folder structure is logical and easy to navigate, separating the business plan from the technical documentation.
+
+Specific and tailored: The content outlines are tailored to your unique 5-server cluster and the specific software stack, including the unconventional use of Linode's Lelastic app.
+
+Extensible: The structure is flexible enough to add more pages and sections as your project grows.
+
+Educational: The outlines guide you on what information to include, helping you to produce a comprehensive and well-thought-out document.
+
+Cons:
+
+Requires significant content creation: While the structure is provided, you still need to write all the content for each file. This is a time-consuming process.
+
+Assumes a successful business plan: The structure assumes you have a clear plan for your business; if your plan changes, the structure may need to be adjusted.
+
+Static nature of MkDocs: While great for documentation, Material for MkDocs is a static site generator. If you wanted dynamic features or content management, you'd need a different platform.
+
+Possible Future Issues
+Lelastic Dependency: While convenient, relying on the Lelastic app tightly couples your solution to the Linode platform. Migrating to another cloud provider would require implementing a different solution like Keepalived with BGP support or a similar floating IP service.
+
+Single Point of Failure: While you have redundant web and database servers, your manager server is a single point of failure for automation and monitoring. If mgsv01 goes down, you lose your Ansible control and NetData monitoring, which could complicate maintenance and troubleshooting during an outage.
+
+Version Drift: The specified software versions (e.g., HAProxy v3.0.5, Postgresql v16) will become outdated. It's crucial to regularly update your systems and documentation to reflect the latest stable or Long-Term Support (LTS) versions.
+
+Scalability Limitations: While this 5-server setup is fine for 25 low-traffic sites, it will have limitations if your traffic grows significantly. Scaling beyond the initial 5 servers requires a more complex architecture and potentially different tools.
+
+Alternative Programs, Apps, or Procedures
+For High Availability (Web): Instead of Linode's Lelastic, you could use Keepalived with BGP (Border Gateway Protocol). This would provide a vendor-agnostic high availability solution, allowing for easier migration to other cloud providers.
+
+For Load Balancing (Web): While HAProxy is excellent, Nginx Plus (the paid version of Nginx) offers advanced features like live activity monitoring and on-the-fly configuration changes. For a completely open-source alternative, Nginx is a viable choice on its own for simple load balancing if you don't need HAProxy's advanced features. For more advanced features beyond what Nginx can provide, consider using Envoy Proxy.
+
+For Database Management: While Repmgr is a solid choice, you could also consider using Patroni. Patroni is a robust, open-source template for managing a high-availability PostgreSQL cluster with automated failover, and many consider it to be the modern standard for this use case.
+
+For Monitoring: Prometheus and Grafana are a widely used open-source combination for monitoring and visualization. Prometheus collects metrics, and Grafana provides powerful dashboards. This combination is more flexible and scalable than NetData alone, especially as your cluster grows.
+
+For Cluster Management: While Ansible is an excellent choice, Terraform from HashiCorp is the standard for Infrastructure as Code (IaC). You could use Terraform to provision your Linode servers and then use Ansible for configuration management on those servers. This combination provides a powerful and reproducible workflow for your entire infrastructure.
+
+
+
+
+
+
+
+
+
+
+
+
+Tools
+

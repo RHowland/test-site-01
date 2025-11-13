@@ -1,0 +1,85 @@
+GSG-Proc - Create a Minimal MMkDocs Website v1.0.txt
+----------------------------------------------------
+
+The purpose of this document is to provide a step-by-step list of 
+commands for operations that are needed to create and configure a 
+MINIMAL MkDocs web site on a Windows 10 or 11 computer or on 
+a Linux computer and then deploy that site to GitHub Pages. 
+
+
+"GSG-Proc:"  = "GuruServerGroup Procedure"
+
+--------------------------------
+This document is part of this GitHub repo: 
+
+  gsg-gh-pages-site01 
+
+
+-------------------------------
+(show one or more URLs for articles or videos that provided the correct 
+ syntax for the commands in this procedure document)
+
+  (article or video title for source website 01)
+  (URL for source website 01)
+ 
+  (article or video title for source website 02) 
+  (URL for source website 02)
+
+
+(show any related urls such as GitHub repos if applicable)
+
+
+=====================================================================
+
+                  Create Minimal Website Procedure
+
+=====================================================================
+---------------------------------------------------------------------
+005 (operation description)  
+
+    a. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command:
+>   (full text for the command)
+
+
+    (If a second or third command is required to properly complete 
+     the above operation, then add more commands as needed.)
+
+   
+    b. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command:
+>   (full text for the command)
+
+
+
+    c. (after doing an installation, provide a separate command 
+        that the user can use to confirm that the installation was 
+        successful.)
+
+
+    Windows validation command:
+>   (full text for the validation command)
+
+
+
+---------------------------------------------------------------------
+010 (operation description)
+
+    a. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command: 
+>   (full text for the command)
+
+
+
+...
+
+
+---------------------------------------------------------------------
+(End of Document)
+

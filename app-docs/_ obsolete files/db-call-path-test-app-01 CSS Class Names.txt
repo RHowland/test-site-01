@@ -1,0 +1,234 @@
+db-call-path-test-app-01 CSS Class Names.txt
+--------------------------------------------
+
+The purpose of this document is to show all custom CSS 
+variable names to be used in this project.  
+
+I have created these variables so I can make minor style 
+changes in the future if needed. 
+
+
+
+Please add these CSS variables to the globals.css :root 
+section: 
+
+/* ---------------- Main Page Container ---------------------------*/
+
+/* ---------------- Page Container Variables ---------------------*/ 
+
+  --page-container-width:   552px;            /* approx width, adjust this value to  
+                                                 provide sufficient width for all 
+                                                 text shown in the layout page         */
+
+  --page-container-height:  576px;            /* approx height, adjust this value to  
+                                                 provide sufficient height for all 
+                                                 rows shown in the layout page         */
+  --page-border:            2px solid;
+
+  --page-border-color:      #888888;          /* (med dark gray) left & right borders  */
+  --page-border-width:      2px;              /* border thickness                      */
+  --page-box-sizing:        border-box;      
+  --page-z-index:           10;
+
+  --page-padding-left:      8px;
+  --page-padding-right:     8px;
+  
+/* --------------- Page Container class declaration --------------- */
+.container {
+  width:       var(--page-container-width); 
+  height:      var(--page-container-height); 
+  border:      var(--page-border);
+  box-sizing:  var(--page-box-sizing);
+  z-index:     var(--page-z-index);
+}
+
+/* =============================================================================*/
+/* ---------- Header banner variables ---------- */
+  --hdr-banner-height:      24px;             /* exact header banner height           */
+  --hdr-banner-bg-color:    #e1e1e1;          /* (med dark blue)                      */
+  --hdr-banner-text-color:  #d5d4d4;          /* very light gray) header text color   */
+  --hdr-banner-pad-left:    8px;              /* header left padding                  */
+  --hdr-banner-pad-right:   8px;              /* header right padding                 */
+  --hdr-banner-font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; /* header font */
+  --hdr-banner-font-size:   1rem;             /* header text size (16px)              */
+  --hdr-banner-font-weight: 700;              /* header text weight                   */
+  --hdr-banner-z-index:     20;               /* renders in front of the border       */
+
+/* -------- Header banner class declarations -------- */
+.hdr-banner {                                 /* header banner                         */
+  height:          var(--hdr-banner-height);      /* fixed bar height                  */
+  background-color:var(--hdr-banner-bg-color);    /* header background                 */
+  color:           var(--hdr-banner-text-color);  /* header text color                 */
+  font-family:     var(--hdr-banner-font-family); /* header font                        */
+  font-size:       var(--hdr-banner-font-size);   /* header font size                   */
+  font-weight:     var(--hdr-banner-font-weight); /* header font weight                 */
+  z-index:         var(--hdr-banner-z-index);     /* renders in front of the page border */ 
+}
+
+.hdr-banner-inner {                           /* flex row for left and right text       */
+  display:         flex;                          /* lay out left/right                 */
+  align-items:     center;                        /* vertical centering                 */
+  justify-content: space-between;                 /* left and right extremes            */
+  padding-left:    var(--hdr-banner-pad-left);    /* left padding                       */
+  padding-right:   var(--hdr-banner-pad-right);   /* right padding                      */
+  height:          100%;                          /* fill banner height                 */
+}
+
+/* =============================================================================*/
+/* ---------- Footer banner variables ---------- */
+  --ftr-banner-height:      24px;             /* exact footer banner height            */
+  --ftr-banner-bg:          #e1e1e1;          /* (med dark blue)                       */
+  --ftr-banner-text-color:  #d5d4d4;          /* (very light gray)                     */
+  --ftr-banner-pad-left:    8px;              /* footer left padding                   */
+  --ftr-banner-pad-right:   8px;              /* footer right padding                  */
+  --ftr-banner-font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; /* footer font */
+  --ftr-banner-font-size:   1rem;             /* footer text size (16px)               */
+  --ftr-banner-font-weight: 700;              /* footer text weight                    */
+  --ftr-banner-z-index:     20;               /* renders in front of the border        */
+
+/* -------- Footer banner class declarations -------- */
+.ftr-banner {                                     /* footer banner bar                       */
+  height:          var(--ftr-banner-height);      /* fixed bar height                        */
+  background-color:var(--ftr-banner-bg);          /* footer background                       */
+  color:           var(--ftr-banner-text-color);  /* footer text color                       */
+  font-family:     var(--ftr-banner-font-family); /* footer font                             */
+  font-size:       var(--ftr-banner-font-size);   /* footer font size                        */
+  font-weight:     var(--ftr-banner-font-weight); /* footer font weight                      */
+  z-index:         var(--ftr-banner-z-index);     /* renders in front of the page border     */ 
+}
+
+.ftr-banner-inner {                               /* flex row for future status text         */
+  display:        flex;                           /* flexible layout                         */
+  align-items:    center;                         /* vertical centering                      */
+  justify-content:space-between;                  /* keep option to add right-side text      */
+  padding-left:   var(--ftr-banner-pad-left);     /* left padding                            */
+  padding-right:  var(--ftr-banner-pad-right);    /* right padding                           */
+  height:         100%;                           /* fill banner height                      */
+}
+
+/* =============================================================================*/
+/* ---------- Button variables ---------- */
+  --btn-border:             1px solid;     
+  --btn-font-family:        "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; /* header font */
+  --btn-font-size:          1rem;
+  --btn-font-weight:        500;
+  --btn-border-color:       #888888;          /* (med dark gray)                       */
+  --btn-bg-color:           #c0c0be;          /* (light gray)                          */
+  --btn-text-color:         #888888;          /* (med dark gray) all buttons           */
+  --btn-hover-bg-color:     #d5d4d4;          /* (very light gray)                     */
+  --btn-border-radius:      3px;
+  --btn-cursor-type:        pointer;          /* button is clickable                   */
+  --btn-text-vt-align:      center;
+  --btn-text-hz-align:      center;
+  --btn-height:             28px;
+  --btn-min-height:         24px;
+
+/* ----------- Button class declaration --------------------------*/
+.btn {                                             /* button styles                         */
+  border:           var(--btn-border);             /* button border width & style           */
+  border-color:     var(--btn-border-color);       /* button border color                   */
+  border-radius:    var(--btn-border-radius);      /* button border curve radius            */
+  font-family:      var(--btn-font-family);        /* button font family                    */
+  font-size:        var(--btn-font-size);          /* button font size                      */
+  font-weight:      var(--btn-font-weight);        /* button font weight                    */
+  background-color: var(--btn-bg-color);           /* button background color               */
+  color:            var(--btn-text-color);         /* button text color                     */
+  cursor:           var(--btn-cursor-type);        /* button cursor type                    */
+  text-align:       var(--btn-text-hz-align);      /* horizontal text alignment             */
+  vertical-align:   var(--btn-text-vt-align);      /* vertical text alignment (baseline)    */
+  height:           var(--btn-height);             /* button height                         */
+  min-height:       var(--btn-min-height);         /* button minimum height                 */
+}
+
+/* =============================================================================*/
+/* --------------------- Horizontal Divider Line ---------------------*/
+
+/* ---------- Divider line variables ---------- */
+  --divider-line-color:     #888888;          /* (med dark gray) horiz divider line    */
+  --divider-line-thickness: 1px;              /* divider thickness                     */
+
+/* -------- Divider line -------- */
+.divider-line {                               /* horizontal divider line               */
+  display:          block;                    /* ensure block-level element            */
+  height:           var(--divider-line-thickness);  /* fix height at 1px               */
+  background-color: var(--divider-line-color);/* apply line color                      */
+  width:            100%;                     /* span full inside width of container   */
+  margin:           8px 0;                    /* vertical spacing only                 */
+  box-sizing:       content-box;              /* width ignores padding, respects parent */
+}
+
+/* =============================================================================*/
+/* ---------- Body Text Variables ---------- */
+  --body-font-family-mono:   "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; /* mono font */
+  --body-font-size:          1rem;             /* base mono size                          */
+  --body-font-wgt-normal:    400;              /* normal Roboto Mono                      */
+  --body-font-wgt-medium:    500;              /* medium Roboto Mono                      */
+  --body-font-wgt-bold:      700;              /* bold Roboto Mono                        */
+  --body-text-color:         #888888;          /* (med dark gray)                         */
+
+/* -------- Body mono text styles -------- */
+.body-mono {                                   /* mono family for body region             */
+  font-family: var(--body-font-family-mono);   /* apply mono font                         */
+  font-size:   var(--body-font-size);          /* base mono size                          */
+  color:       var(--body-text-color);         /* text (foreground) color                 */
+}
+
+.body-txt-wgt-normal {                         /* normal mono text                        */
+  font-weight: var(--body-font-wgt-normal);    /* normal weight                           */
+}
+
+.body-txt-wgt-medium {                         /* medium mono text                        */
+  font-weight: var(--body-font-wgt-medium);    /* medium weight                           */
+}
+
+.body-txt-wgt-bold {                           /* bold mono text                          */
+  font-weight: var(--body-font-wgt-bold);      /* bold weight                             */
+}
+
+/* =============================================================================*/
+
+/* ---------------- Modal Dialog Variables -------------------------*/
+
+/* ------------------- Dialog Container ----------------------*/
+--dialog-bg-color:        #d5d4d4;     /* (very light gray) background of dialog box */
+--dialog-border-color:    #88888a;     /* (med dark gray)   border line color */
+--dialog-border-radius:   0px;         /* rounded corner size */
+--dialog-shadow:          0 4px 8px rgba(0,0,0,0.15); /* shadow */
+--dialog-width:           348px;       /* fixed dialog width */
+--dialog-padding:         8px;         /* inside padding */
+--dialog-z-index:         1000;        /* stack order */
+
+/* ------------------- Dialog Header Title ----------------------*/
+--dialog-title-font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+--dialog-title-font-size:   1rem;      /* title size                          */
+--dialog-title-font-weight: 700;       /* semibold title                      */
+--dialog-title-color:       #e1e1e1;   /* (med dark blue) dialog title color  */
+--dialog-title-padding:     12px;      /* spacing around title                */
+
+/* ------------------- Dialog Body Text ----------------------*/
+--dialog-body-font-family: var(--dialog-title-font-family);
+--dialog-body-font-size:   1rem;       /* standard text size                  */
+--dialog-body-font-weight: 500;        /* medium font weight                  */
+--dialog-body-color:       #88888a;    /* (med dark gray) text color          */
+--dialog-body-line-height: 1.4;        /* readable spacing                    */
+--dialog-body-padding:     12px 16px;  /* first number: top and bottom padding values 
+                                          second number: left and right padding values */ 
+
+/* ------------------- Dialog Buttons ------------------------*/
+--dialog-btn-font-family: var(--dialog-title-font-family);
+--dialog-btn-font-size:   0.95rem;     /* button text size           */
+--dialog-btn-font-weight: 500;         /* medium weight              */
+--dialog-btn-height:      28px;        /* consistent button height   */
+--dialog-btn-min-width:   40px;        /* minimum button width       */
+--dialog-btn-padding:     0 16px;      /* button padding             */
+--dialog-btn-radius:      4px;         /* rounded corners            */
+--dialog-btn-cursor:      pointer;     /* clickable cursor           */
+
+--dialog-btn-bg-yes:      #ffffff;     /* white background color     */
+--dialog-btn-text-yes:    #888888;     /* (med dark gray) text color */
+
+--dialog-btn-bg-no:       #ffffff;     /* white background color     */
+--dialog-btn-text-no:     #888888;     /* (med dark gray) text color */
+
+--dialog-btn-bg-ok:       #ffffff;     /* white background color     */
+--dialog-btn-text-ok:     #888888;     /* (med dark gray) text color */

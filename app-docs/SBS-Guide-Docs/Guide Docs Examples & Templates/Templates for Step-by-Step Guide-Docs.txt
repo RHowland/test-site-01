@@ -1,0 +1,371 @@
+Templates for Step-by-Step Guide-Docs.txt
+-----------------------------------------
+2025-10-16 RJH
+
+The purpose of this document is to provide templates to 
+copy and paste into a new Step-by-Step Guide document.  
+
+These templates will help to provide consistent appearance 
+and reduce the time needed to create new Guide documents.
+
+See this document to view what a typical guide document 
+looks like: 
+  ./app-docs/SBS-Guide-Docs/Sample Guide-Doc v1.0.txt
+
+
+Contents of This Document: 
+--------------------------
+
+01 General Requirements
+   a. Fonts
+   b. Procedure Document Sections
+   c. Separator Lines
+   d. WorkStep Section ID Numbers
+   e. Command Marker Character (">")
+   f. Indent by 4 spaces
+   g. LIMIT line lengths to 75 characters 
+
+02 Document Heading Section
+   a. Document Heading Section Example
+   b. Document Heading Section Template 
+   
+03 WorkStep Section
+   a. WorkStep Heading Section Example
+   b. Workstep Heading Section Template
+
+04 Command Section 
+   a. Command Section Example
+   b. Command Section Template
+
+
+==========================================================================
+01               G E N E R A L   R E Q U I R E M E N T S
+
+==========================================================================
+a. Fonts
+--------
+- Use 12 pt "Courier New", Bold, black
+- This font must be a monospace font (not proportional font)
+
+
+-------------------------------------------------
+b. Procedure Document Sections
+------------------------------
+A Procedure Document is made up of these major sections:
+ 
+- Document Heading            
+  - WorkStep Section     
+    - Command Section
+
+---------------------------------------
+Each WorkStep provides documentation for a single, high-level operation in 
+a larger project, like building a web server. 
+
+A WorkStep Section is made up of these sub-sections:
+
+  - WorkStep Section
+    - WorkStep Heading   (provides the workstep# and explanations about this operation)
+    - Command Section    (contains details about command(s) to be executed)
+    - Command Section
+
+
+---------------------------------------
+A Command Section is made up of these sub-sections: 
+
+    - Command Section   
+      - command subject line   (states what the following command will do)
+      - command line           (complete text for the command(s) to be executed)
+      - expected response      (what you should see when this command executes)
+      - supporting text        (optional explanation about this command)
+
+
+-------------------------------------------------
+c. Separator Lines
+------------------
+Use the following separator lines to help the reader to focus attention.
+- WorkStep Separator Lines    (75 equal characers starting in column 1)
+- Subject Separator Lines     (50 hyphen characers starting in column 1)
+
+
+-------------------------------------------------
+d. WorkStep Section ID Numbers
+------------------------------
+Number each WorkStep like this: 005, 010, 015, etc. so we can enter additional 
+WorkSteps in the future.  
+
+Use the leading zero(s) to make the ID numbers more noticeable.
+
+
+-------------------------------------------------
+e. Command Marker Character
+---------------------------
+In Command Sections, in column 1, enter the 
+
+-------------------------------------------------
+f. Indent 4 spaces
+------------------
+In WorkStep sections, space indent all lines by 4 characters (columns 1 thru 4)
+This is needed to enable the Command Marker Characters to stand out. 
+
+>   sudo apt update
+ 
+
+-------------------------------------------------
+g. LIMIT line lengths to 75 characters 
+--------------------------------------
+Use return characters in column 75 or lower to limit line lengths 
+to a max of 75 characters. 
+
+
+
+(end of general requirements section)
+
+
+==========================================================================
+02           D O C U M E N T   H E A D I N G   S E C T I O N
+
+==========================================================================
+
+a. Document Heading Section Example
+-----------------------------------
+
+The following document heading was taken from one of our guide documents. 
+
+Example Heading Section
+
+==========================================================================
+(Perform BUILD and CONFIG operations for a New Web Server V1.0.txt      <-- Enter V1.0 for each new document
+------------------------------------------------------------------      <-- underline the document name
+This document contains detailed step-by-step instructions and Linux 
+commands to build and configure web servers for our 5-server group. 
+
+Document ID: (999)                                        <-- Enter "999".  We will define a unique 
+                                                              ID number at a later time.                      
+2025-08-22                                                <-- document creation date
+Created by: Jim Walters                                   <-- person who created this document
+
+PURPOSE:                                                  <-- a clear purpose statement 
+--------
+The purpose of this document is to define the work steps needed to 
+build and configure web servers for our 5-server group.
+
+PREREQUISITES
+-------------                                             <-- Prequisites are required
+Each server must have the following items installed 
+and configured:
+- Ubuntu Server 22.04 LTS 
+- Uncomplicated Firewall (UFW) enabled
+  - firewall ports opened:
+    - port 22 
+    - port 80  
+    - port 443
+    - an "admin01" user account with sudo privileges.
+
+(end of procedure heading requirements.)
+
+
+
+##########################################################################
+
+
+b. Heading Section Template
+---------------------------
+
+Copy this template and paste it at the top of a new Procedure Document.
+
+(begin Document Heading TEMPLATE TO COPY)
+==========================================================================
+(Name, version # (V1.0),  for this procedure document)
+------------------------------------------------------------
+(One or two sentences that explain the contents in this document.)
+
+Document ID: (999)                                        <-- Enter "999".  We will define a unique 
+                                                              ID number at a later time.                      
+2025-08-22                                                <-- document creation date
+Created by: Jim Walters                                   <-- person who created this document
+
+PURPOSE:                                                  <-- a clear purpose statement 
+--------
+The purpose of this document is to (enter a concise and clear purpose statement.)
+
+PREREQUISITES
+-------------                                             <-- Prequisites are required
+Each server must have the following items installed       <-- Enter (none) if there are not 
+and configured:                                               prerequisites. 
+- Ubuntu Server 22.04 LTS 
+- Uncomplicated Firewall (UFW) enabled
+  - firewall ports opened:
+    - port 22 
+    - port 80  
+    - port 443
+    - an "admin01" user account with sudo privileges.
+
+
+(begin Document Heading TEMPLATE TO COPY)
+
+
+
+
+(End of Document Heading section)
+
+##########################################################################
+
+
+==========================================================================
+03                  W O R K S T E P    S E C T I O N                  
+
+==========================================================================
+
+a. WorkStep Section Example
+---------------------------
+
+This WorkStep section was copied from one of our Procedure Documents
+
+==========================================================================
+WorkStep 035 
+Create the folder for the DevOpSite01 web app.
+----------------------------------------------
+websvr01 - Node 01  UserName: admin01
++++++++++++++++++++++++++++++++++++++
+
+    a. Create testwebsite11 website folder. 
+
+>   sudo mkdir -p /var/www/devopsite01                         
+    ----------------------------------
+
+    Expected Response: none
+    
+
+
+    b. Assign ownership to the dev_admin01 user:
+
+>   sudo chown admin01:admin01 /var/www/devopsite01           
+    -----------------------------------------------
+
+
+    c. Set permissions for the devopsite01 test site directory:
+
+>   sudo chmod -R 755 /var/www/devopsite01 
+    --------------------------------------
+
+    The devopsite01 web app is reserved for devops people so they 
+    can do some minor testing to confirm that the web server is  
+    configured correctly.   
+
+
+==========================================================================
+
+
+##########################################################################
+
+
+b. Workstep Section Template
+----------------------------
+
+==========================================================================
+WorkStep 035                                                                <-- "WorkStep" word is required, 3 digit numbers: 025, 030, 035, etc. 
+(Short Title line that states what happends in this workstep section.)      <-- Title line is required.
+----------------------------------------------------------------------      <-- underline this title line. 
+(server hostname) - (Linux username)                                        <-- hostname & username are required at beginning of every Workstep Section
+++++++++++++++++++++++++++++++++++++                                        <-- underline is required
+
+    a. (Describe what this command does and why it is needed)               <-- this statement is required
+
+>   (command text to enter)                                                 <-- Arrow character (">") and commmand is required 
+    -----------------------                                                 <-- underline is required
+
+
+    b. (Describe what this command does and why it is needed) 
+
+>   (command text to enter)                                                 <-- Arrow character (">") and commmand is required   
+    -----------------------
+
+
+==========================================================================
+
+
+(End of WorkStep Section)
+
+##########################################################################
+
+
+==========================================================================
+04                    C O M M A N D   S E C T I O N                  
+
+==========================================================================
+
+a. Command Section Example
+--------------------------
+
+                                                     (command section "a." starts on this blank line)
+    a. Create devopsite01 website folder. 
+
+>   sudo mkdir -p /var/www/devopsite01                         
+    ----------------------------------
+
+    Expected Response: none
+                                                     (command section "a." ends on this blank line)  
+                                                     (command section "b." starts on this blank line)                                              
+    b. Assign ownership to the dev_admin01 user:
+
+>   sudo chown admin01:admin01 /var/www/devopsite01           
+    -----------------------------------------------
+                                                     (command section "b." ends on this blank line)  
+
+                                                     (command section "c." starts on this blank line)                                              
+    c. Set permissions for the devopsite01 test site directory:
+
+>   sudo chmod -R 755 /var/www/devopsite01 
+    --------------------------------------
+
+    The devopsite01 web app is reserved for devops people so they 
+    can do some minor testing to confirm that the web server is  
+    configured correctly.   
+
+                                                     (command section "c." ends on this blank line)  
+
+
+
+##########################################################################
+
+
+b. Command Section Template
+---------------------------
+
+WorkStep 055 
+(Short statement about the following commands).
+-----------------------------------------------
+
+(server hostname and Linux username)
+++++++++++++++++++++++++++++++++++++
+
+                                           <-- command section begins on this blank line)
+    a. (Describe what the next command will do and why it is needed) (letter a., b., c., etc)
+                                           <-- leave ONE blank line after EACH description
+>   (text for command to execute)          <-- in column #1: add an "arrow" character (">")
+    -----------------------------          <-- underline the entire command 
+                                           <-- leave ONE blank line before the Expected Response line
+    Expected Response:                     <-- this line is optional.  
+    (one or more lines to show what response to expect. )
+                                           <-- leave TWO blank lines after the Expected Response line 
+                                           <-- (end of command section
+    b. (Describe what the next command will do and why it is needed) 
+
+>   (text for command to execute)
+    -----------------------------          <-- most of the time, leave two blank lines after the underline lines.
+
+
+    c. (Describe what the next command will do and why it is needed) 
+
+>   (text for command to execute)
+    -----------------------------
+                                           <-- leave one blank line BEFORE FOLLOW-UP text
+    (add additional text to explain important points)   <-- Follow-Up Text
+
+
+==========================================================================
+(End of Command Section)
+
+
+
+(End of Document)

@@ -1,0 +1,12 @@
+030 Configure DNS for a Web Domain Name.txt
+-------------------------------------------
+
+The purpose of this document is to provide step-by-step 
+guidance to configure NameCheap DNS settings to use a 
+fully qualified domain name (testwebsite15.xyz to access 
+the deployed GuruServerGroup.com website running on 
+GitHub pages. 
+
+This document will be paired with this LibreOfficeWriter 
+document that contains screen shots of the NameCheap 
+website and DNS configuration pages.  

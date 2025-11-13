@@ -1,0 +1,99 @@
+GSG-Proc - Install Material MkDocs v1.0 - Example Content.txt
+-------------------------------------------------------------
+
+Rene: 
+  NOTE: This document contains EXAMPLE CONTENT to give you an idea 
+  about what the final content should look like. 
+
+--------------------------------
+To create the Live Documentation file, 
+Do the following: 
+
+  OPEN this Template file:
+    "GSG-Proc - Install Material MkDocs v1.0 - Template.txt"
+
+  ... and save it as the FINAL DOCUMENT: 
+    "GSG-Proc - Install Material MkDocs v1.0.txt"
+
+  ... and enter the procedure details 
+
+The purpose of this document is to provide a step-by-step list of all 
+of the operations that are needed to install and configure the 
+Material MkDocs App on Windows 10 Pro. 
+
+
+--------------------------------
+"GSG-Proc:"  = "GuruServerGroup Procedure"
+
+--------------------------------
+This document is part of this GitHub repo: 
+
+  https://github.com/RHowland/gsg-gh-pages-site01.git
+
+
+-------------------------------
+Supporting Youtube video and corresponding blog article:
+
+  https://jameswillett.dev/getting-started-with-material-for-mkdocs/
+
+  https://www.youtube.com/watch?v=xlABhbnNrfI&t=572s
+ 
+ 
+Supporting GitHub repo for this video and blog article: 
+  
+  https://github.com/james-willett/material-mkdocs-youtube-2024
+
+
+=====================================================================
+
+             Install Material MkDocs Starter Website
+
+=====================================================================
+---------------------------------------------------------------------
+005 Install Material MkDocs - Create Working Environment  
+
+    a. Setup a Python virtual environment
+
+    Windows 10 command:
+>   python -m venv venv
+
+
+
+    b. Activate the python virtual environment
+
+    Windows 10 command:
+>   .\venv\Scripts\activate
+
+
+    
+    c. Install material mkDocs using python's package manager pip
+
+    Windows 10 command:
+>   pip install mkdocs-material
+
+     
+
+    
+
+    d. Verify mkDocs installation
+
+    Windows 10 validation command:
+>   mkdocs --version 
+
+
+
+---------------------------------------------------------------------
+010 (operation description)
+
+    a. Sets up yaml file and docs directory as intial mkdocs project template
+
+    Windows 10 command:
+>   mkdocs new .
+
+
+...
+
+
+---------------------------------------------------------------------
+(End of Document)
+

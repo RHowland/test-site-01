@@ -1,0 +1,598 @@
+Site Structure with Placeholder Files - ChatGPT.txt
+---------------------------------------------------
+
+AI - GSG Site Structure - Prompt.txt
+------------------------------------
+The purpose of this prompt is to provide a number of 
+prototype documents and folder trees and placeholder 
+documents for the GuruServerGroup.com web site to be 
+developed with the Material for MkDocs app.
+
+
+
+
+
+AI Prompt:
+----------
+
+        (Get Prototype documents for Material for MkDocs
+        ------------------------------------------------
+
+
+
+=================================
+(Begin Prompt Intro and Objectives)
+The purpose of the AI query is to create a starter site with pages 
+that explain a business plan followed by pages that explain details 
+about the 5-server group. 
+
+=================================
+(Begin AI Preamble Text)
+
+You are a renowned world expert in Material MkDocs, MkDocs, Linux, 
+Ubuntu Server, HAProxy, 
+Keepalived, Nginx, Node.js, Postgresql, Pgbouncer, repmgr, Ansible 
+and NetData, and you are especially skilled at configuring very 
+small 5-server clusters in unconventional but effective ways 
+to support up to 25 small, low-traffic Next.js web apps. 
+
+-------------------------------------
+I am a beginner with open-source technologies, but I have many years 
+of experience with other IT technologies in these roles: full-stack 
+developer, DBA, Devlops, and sysadmin.
+
+Please do not assume that I know anything about open source 
+technologies or operating systems. 
+
+-------------------------------------
+When asked for advice, and before providing your response, 
+you:
+- always do extra research to confirm that the advice that you provide 
+  in this query reflects the latest LTS versions of the technologies 
+  that are discussed in your response.
+- always look for open-source apps rather than paid apps
+- always select high quality open-source apps that have a good 
+  reputation, are well-supported, and consume the least amount of memory. 
+
+- In your response, 
+  - in paths that you provide, 
+    - you always provide full paths and do not use the tilde character.
+    - you always provide explanations for all abbreviations. 
+
+  - in scripts that you provide, 
+    - you always: 
+      - provide the "top-of-file-docs-section". 
+      - the "top-of-file-docs-section" contains a number of "subjects", 
+        presented in a "bullet-point-like" manner for readability.
+      - each subject area begins with a "subject title" followed by 
+        explanatory text to help the end user to gain a thorough 
+        understanding of this script. 
+      - in the subject text, you insert hard return characters to 
+        limit the line lengths to 80 characters or less, for readability.
+      - add a blank line between subjects for readability. 
+      - Subject Titles: 
+        - Full path to this script file (including filename)
+        - Command to execute this script.
+        - What this script does and why it is important. 
+        - Required prerequisites to run this script.
+        - Command to save this script into the correct system path.
+        - Command to make this script executable.
+        - Full Path of the Parent Script File Name 
+              (if there is no parent script file, show "none".)
+        - User security level required to execute this script.
+        - Additional details about executing this script.
+        - What should normally be done after executing this script.
+        - Idempotent status.
+        - Any other things needed to prepare the environment.
+
+  - in the BODY of scripts or in the body of step-by-step PROCEDURES, 
+    you always insert "executed-under" notations like these at the 
+    beginning of the body and at points when the host name changes or 
+    the username changes. 
+
+      # Execute under user account: (user account)
+      #+++++++++++++++++++++++++++++++++++++++++++
+ 
+      # Execute on hostname: (hostname)
+      #++++++++++++++++++++++++++++++++ "
+
+  - in config settings blocks that you provide, 
+    - at the beginning of the file, you always provide comments that 
+      explain the overall purpose of the config file. 
+    - you always provide comments that explain what each config setting 
+      does and why it is important.
+    - required status: "required" or "optional"
+      - if optional, explain the reason(s) to make this setting 
+        required or optional. 
+
+-------------------------------------
+Please tailor your response to this query to provide configuration 
+guidance for a 5-server group that includes: 
+- 2 web servers: wbsv01 & wbsv02, 
+- 2 db servers: dbsv01 & dbsv02, 
+- 1 manager server: mgsv01. 
+
+These 5 servers work together to provide hosting services for 50 
+low-traffic websites. 
+
+This server group is limited to 5 servers.  I cannot add any more 
+servers to this group.
+
+The combined total of web hits for all 25 websites will be 100,000 to 
+400,000 per 14 hour day (7 am to 9 pm) -- about 8 hits per second. 
+
+The combined total of db transaction for all 25 websites will be about 
+50,000 to 100,000 trx per 14 hour day or about 2 trx per second. 
+
+Because the traffic is so light, DO NOT worry about performance. I will 
+always adjust the number of CPUs and the amount of RAM to provide for 
+very good performance.
+
+-------------------------------------
+Please tailor your response to this query based on the 5 servers being 
+configured as follows: 
+
+All servers are Linode.com cloud servers running Ubuntu Server 22.04.
+
+Both web servers will have these apps installed:
+- Linode.com Lelastic app
+- HAProxy    v3.0.5
+- Nginx      v1.27.1
+- Node.js    v22
+- PM2        v5.3.1 (monitors and restarts Ngnix and Node.js.) 
+
+Both database servers will have these apps installed:
+- PgBouncer  v1.23.1
+- Postgresql v16
+- Repmgr     v5.5.0 (3rd Repmgr on mgr server, witness mode)
+- Keepalived v2.3.1
+
+The Manager server will have these apps installed: 
+- Ansible    v10.0.0
+- NetData    v1.46.0
+- Nginx      v1.27.1  (for sysadmin login)
+- Node.js    v22
+- Repmgr     v5.5.0
+
+These HAProxy services will be enabled:
+- On the web servers
+  - Active/passive HAProxy setup
+  - Auto failover assisted by Linode Lelastic
+  - TLS termination at the origin server (from Cloudflare)
+  - Round-robin load balancing 
+  - Cookie-based sticky sessions 
+  - performs active health checks
+    - uses inter/fastinter/downinter, rise/fall so failovers are fast 
+      but not flappy. 
+    - performs slowstart to gradually ramp up the server load. 
+
+  - Runtime API (via the stats socket) (disable servers, drain traffic, etc)
+  - Runtime API (command interface)
+    - Stats page
+    - provides stats socket to disable a server, drain traffic, 
+      read stick-tables, etc., without reloads.
+
+- On the db servers:
+  - serves as the single TCP entry to the database servers
+  - Performs health checks on PgBouncer.
+  - Handles connection-failure retries.
+  - Disable Db Server for maintenance, Drain db connections.
+  - Performs retries to establish a connection that was dropped. 
+
+--------------------------------------
+Please provide your response based on estimates that Cloudflare servers 
+will handle 80% of the static traffic for my websites, 
+and Cloudflare will provide:
+- TLS terminations, web-browser-to-Cloudflare servers
+- TLS encryptions, Cloudflare-to-origin servers
+- DDOS protection
+- Rate limiting
+- CDN services
+
+--------------------------------------
+Please also be advised that my two Linode.com web servers will use 
+the Linode.com Lelastic app in place of the Keepalived app to handle 
+shared IP address services in the event of a web server failure. 
+
+Lelastic is Linode’s elastic IP client that simplifies assigning static, 
+public IPv4 addresses (elastic IPs) to virtual machines by wrapping 
+gobgp for user-friendly setup, providing the same floating IP services 
+as Keepalived without requiring advanced BGP skills.
+
+(End of AI Preamble Text)
+=================================
+(Begin Specific Prompt Details)
+
+This AI query will ask you to generate a response that is a business 
+plan in the first part of the Material MkDocs website followed by 
+documentation pages explain the details about the 5-server group. 
+
+Please provide me with the full yaml for the a 20-30 page website that 
+includes a business plan in the first part of  the website followed by 
+a documentation website about the 5-server group. 
+
+In both sections (the business plan section and the hardware documentation 
+section), please provide placeholder docs for every folder. Please provide 
+these placeholder docs as .txt files and give them an appropriate name. 
+Inside each placeholder doc, please provide an outline of what I should 
+write in that document. 
+
+With this structure: folder organization, and placeholder docs, that 
+will give me a track to follow to build out my bus-plan docs and later, 
+build out my hardware documents
+ 
+(End of Specific Prompt Details)
+=================================
+(Begin Follow-up Prompt Details)
+
+After you have provided your best response to my prompt, to conclude 
+your response, you will always:
+- always provide a list of pros and cons about your response.
+- always tell me if there are possible future stability, security, 
+  and/or maintenance issues.  
+- always mention some alternative programs, apps, or procedures that 
+  might be a better fit for my specific use case.
+
+
+(End of Follow-up Prompt Details)
+=================================
+(Begin Last-Minute Prompt Details)
+
+
+
+
+(End of Last-Minute Prompt Details)
+=================================
+
+(End of AI Prompt)
+
+#####################################################################
+#####################################################################
+ 
+Please create the same response that you provided a couple of hours ago with the detailed yaml file for mkdocs and with placeholder files for every folder in the yaml file.  I like the first placeholder documents with some nice outlines in them. 
+ChatGPT said:
+Thought for 14s
+
+Goal: deliver a ready-to-run Material for MkDocs skeleton with a fully-commented mkdocs.yml plus nice outline placeholders for every page referenced in the nav.
+
+Here’s your concise plan, boss:
+
+In VS Code, create a new empty folder (e.g., gsg-mkdocs).
+
+Save the mkdocs.yml below into that folder.
+
+Run one of the scaffold scripts (PowerShell on Windows or Bash on Linux/macOS) to create all folders/files.
+
+pip install mkdocs-material mkdocs-blog-plugin (or your chosen blog plugin) and mkdocs serve.
+
+
+==================================================================================
+mkdocs.yml (fully commented)
+# mkdocs.yml                                                                 # Top-level MkDocs config file
+site_name: Guru Server Group Docs                                            # Displayed site title
+site_description: Docs for a 5-server group hosting 50 low-traffic sites     # Shown in metadata for SEO
+site_author: GuruServerGroup                                                 # Used by themes/metadata
+site_url: https://example.github.io/gsg-docs                                 # Canonical URL (adjust later)
+
+repo_name: GuruServerGroup/gsg-docs                                          # Shown in header "Edit on GitHub"
+repo_url: https://github.com/GuruServerGroup/gsg-docs                        # Link to your repo
+edit_uri: edit/main/docs/                                                    # Enables "Edit this page" links
+
+theme:                                                                       # Material theme configuration
+  name: material                                                             # Use Material for MkDocs
+  features:                                                                  # Material feature toggles
+    - navigation.tabs                                                        # Top-level tabs in nav
+    - navigation.top                                                         # Back-to-top button
+    - content.code.copy                                                      # Copy button for code blocks
+    - search.suggest                                                         # Search suggestions
+    - search.highlight                                                       # Highlight search matches
+  palette:                                                                   # Color palette overrides
+    - scheme: default                                                        # Default (light) scheme
+      primary: blue                                                          # Primary brand color
+      accent: indigo                                                         # Accent color
+  favicon: assets/images/favicon.png                                         # Path to favicon (placeholder)
+  logo: assets/images/logo.svg                                               # Path to logo (placeholder)
+  custom_dir: overrides                                                      # Optional Jinja2 template overrides
+
+extra_css:                                                                   # Extra CSS files to tweak UI
+  - assets/styles/extra.css                                                  # Implements header/footer banners, colors
+
+plugins:                                                                     # MkDocs plugins
+  - search                                                                   # Built-in search
+  - blog:                                                                    # Blog plugin (install separately)
+      blog_dir: blog                                                         # Where blog lives under docs/
+      blog_toc: true                                                         # Auto TOC for blog posts
+      post_url_format: "{date}/{slug}"                                       # Post URL pattern
+
+markdown_extensions:                                                         # Useful Markdown extensions
+  - admonition                                                               # ::: note/warning/info blocks
+  - toc:                                                                     # Table of contents
+      permalink: true                                                        # Add ¶ permalinks
+  - attr_list                                                                # { .class #id } attributes
+  - tables                                                                   # GitHub-style tables
+  - codehilite                                                               # Syntax highlighting
+  - pymdownx.details                                                         # Collapsible sections
+  - pymdownx.superfences                                                     # Fenced code block extras
+  - pymdownx.snippets                                                        # Include content from files
+
+nav:                                                                         # The site navigation
+  - Home: index.md                                                           # Landing page
+  - About:                                                                   # About section
+      - Overview: about/index.md                                             # About overview
+      - Our Team: team/index.md                                              # Team page (requested)
+      - Contact: about/contact.md                                            # Contact info page
+  - Business Plan:                                                           # Business plan section
+      - Executive Summary: plan/01-executive-summary.md                      # High-level summary
+      - Market & Audience: plan/02-market-and-audience.md                    # Market analysis
+      - Services & Pricing: plan/03-services-and-pricing.md                  # Offering/pricing
+      - Operations: plan/04-operations.md                                    # Ops overview
+      - Risk & Compliance: plan/05-risk-and-compliance.md                    # Risk/compliance
+  - 5-Server Group:                                                          # Technical docs section
+      - Architecture Overview: servers/00-architecture-overview.md           # Diagrams/flow
+      - Web Tier (HAProxy+Keepalived): servers/10-web-haproxy-keepalived.md  # LB/HA
+      - NGINX Reverse Proxy: servers/20-nginx-reverse-proxy.md               # NGINX config
+      - App Tier (Node.js/Next.js): servers/30-app-tier-nextjs.md            # App design/deploy
+      - Database Tier (PostgreSQL): servers/40-postgresql.md                 # DB primary/standby
+      - PgBouncer: servers/45-pgbouncer.md                                   # Pooling/faults
+      - Auth & RBAC: servers/50-auth-rbac.md                                 # Roles/permissions
+      - Monitoring (NetData): servers/60-monitoring-netdata.md               # Monitoring setup
+      - Security Stack: servers/70-security-stack.md                         # Lynis/OSSEC/RKH/CrowdSec
+      - CI/CD & Ansible: servers/80-cicd-ansible.md                          # Automation
+      - Testing & DR: servers/90-testing-disaster-recovery.md                # Tests/backup/restore
+  - Blog: blog/index.md                                                      # Blog landing (plugin)
+  - Appendix:                                                                # Misc helpers
+      - Glossary: appendix/glossary.md                                       # Terminology
+      - Naming & Versioning: appendix/naming-and-versioning.md               # Conventions
+      - References: appendix/references.md                                   # Links/citations
+
+VS Code scaffold scripts
+
+Use one of these to generate all folders and placeholder pages (with nice outlines). Pick PowerShell on Windows or Bash on Linux/macOS. Both create exactly the tree implied by the YAML.
+
+PowerShell (Windows) — save as scaffold.ps1 and run from the project root
+# scaffold.ps1                           # Create folders/files for the MkDocs site              
+
+$ErrorActionPreference = "Stop"          # Fail fast                                             
+
+# 1) Folders                                                                                     
+$dirs = @(
+  "docs",
+  "docs/about",
+  "docs/team",
+  "docs/plan",
+  "docs/servers",
+  "docs/blog",
+  "docs/appendix",
+  "docs/assets/images",
+  "docs/assets/styles",
+  "overrides"
+)                                                                                                 # Target directories
+$dirs | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force | Out-Null }               # Create dirs        
+
+# 2) Images + styles placeholders                                                                
+Set-Content "docs/assets/images/logo.svg" "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='8' ry='8' fill='#3B82F6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='white'>GSG</text></svg>"  # Simple SVG logo
+Set-Content "docs/assets/images/favicon.png" ""                                                  # Placeholder file    
+@'
+/* extra.css                               */ /* Custom look-and-feel and banners                 */
+:root{--gsg-banner-bg:#1e3a8a;--gsg-body-bg:#f5f6f8;--gsg-text:#4b5563;}                          /* Theme vars        */
+.md-header{background:var(--gsg-banner-bg)!important;}                                           /* Header color      */
+.md-footer{background:var(--gsg-banner-bg)!important;}                                           /* Footer color      */
+.md-main{background:var(--gsg-body-bg)!important;}                                               /* Page body color   */
+.md-content{color:var(--gsg-text);}                                                              /* Text color        */
+.md-header,.md-footer{min-height:80px;}                                                          /* Banner height     */
+.right-half-image{float:right;width:50%;margin-left:20px;}                                       /* Right image       */
+.clearfix::after{content:"";display:block;clear:both;}                                           /* Clear floats      */
+'@ | Set-Content "docs/assets/styles/extra.css"                                                  # Write CSS          
+
+# 3) Helper to write markdown with an outline                                                     
+function Write-Md($path, $title, $body){
+  $content = @"
+--- 
+title: $title
+---
+
+# $title
+
+> Status: _placeholder outline_
+
+## Purpose
+- What this page covers and why it matters.
+
+## Key Concepts
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Step-by-Step
+1) Step one
+2) Step two
+3) Step three
+
+## Configuration
+- Files, snippets, and parameters.
+
+## Verification
+- How to confirm it works.
+- Common pitfalls & fixes.
+
+## Next Steps
+- Where to go from here.
+"@
+  $dir = Split-Path -Parent $path
+  if(!(Test-Path $dir)){ New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+  $content | Set-Content $path
+}                                                                                                 # Function to create outline pages
+
+# 4) Pages for NAV                                                                               
+Write-Md "docs/index.md" "Home" @"
+<div class='clearfix'>
+<img src='assets/images/logo.svg' class='right-half-image' alt='GSG Logo'/>
+**Welcome to Guru Server Group Docs.** Use the top navigation to explore Business Plan, 5-Server Group, and Blog.
+</div>
+
+- Start with **Architecture Overview** for a guided tour.
+- Visit **Blog** for updates.
+"@                                                                                                 # Home page         
+Write-Md "docs/about/index.md" "About" ""                                                         # About overview    
+Write-Md "docs/team/index.md" "Our Team" ""                                                       # Team page         
+Write-Md "docs/about/contact.md" "Contact" ""                                                     # Contact page      
+
+Write-Md "docs/plan/01-executive-summary.md" "Executive Summary" ""                               # Plan page         
+Write-Md "docs/plan/02-market-and-audience.md" "Market & Audience" ""                             # Plan page         
+Write-Md "docs/plan/03-services-and-pricing.md" "Services & Pricing" ""                           # Plan page         
+Write-Md "docs/plan/04-operations.md" "Operations" ""                                             # Plan page         
+Write-Md "docs/plan/05-risk-and-compliance.md" "Risk & Compliance" ""                             # Plan page         
+
+Write-Md "docs/servers/00-architecture-overview.md" "Architecture Overview" ""                    # Tech page         
+Write-Md "docs/servers/10-web-haproxy-keepalived.md" "Web Tier (HAProxy+Keepalived)" ""           # Tech page         
+Write-Md "docs/servers/20-nginx-reverse-proxy.md" "NGINX Reverse Proxy" ""                        # Tech page         
+Write-Md "docs/servers/30-app-tier-nextjs.md" "App Tier (Node.js/Next.js)" ""                     # Tech page         
+Write-Md "docs/servers/40-postgresql.md" "Database Tier (PostgreSQL)" ""                          # Tech page         
+Write-Md "docs/servers/45-pgbouncer.md" "PgBouncer" ""                                            # Tech page         
+Write-Md "docs/servers/50-auth-rbac.md" "Auth & RBAC" ""                                          # Tech page         
+Write-Md "docs/servers/60-monitoring-netdata.md" "Monitoring (NetData)" ""                        # Tech page         
+Write-Md "docs/servers/70-security-stack.md" "Security Stack" ""                                  # Tech page         
+Write-Md "docs/servers/80-cicd-ansible.md" "CI/CD & Ansible" ""                                   # Tech page         
+Write-Md "docs/servers/90-testing-disaster-recovery.md" "Testing & Disaster Recovery" ""          # Tech page         
+
+Write-Md "docs/blog/index.md" "Blog" @"
+Create posts as files in **docs/blog/** with date prefixes (e.g., `2025-09-17-first-post.md`).
+"@                                                                                                 # Blog landing      
+
+Write-Md "docs/appendix/glossary.md" "Glossary" ""                                                # Appendix          
+Write-Md "docs/appendix/naming-and-versioning.md" "Naming & Versioning" ""                        # Appendix          
+Write-Md "docs/appendix/references.md" "References" ""                                            # Appendix          
+
+Write-Host "Scaffold complete."                                                                   # Done message      
+
+Bash (Linux/macOS) — save as scaffold.sh and run: bash scaffold.sh
+# scaffold.sh                           # Create folders/files for the MkDocs site              
+set -e                                  # Fail fast                                            
+
+mkdir -p docs/{about,team,plan,servers,blog,appendix,assets/images,assets/styles} overrides     # Dirs              
+printf "%s" "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='8' ry='8' fill='#3B82F6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='white'>GSG</text></svg>" > docs/assets/images/logo.svg  # Logo
+: > docs/assets/images/favicon.png      # Placeholder favicon                                   
+
+cat > docs/assets/styles/extra.css << 'CSS'
+/* extra.css                               */ /* Custom look-and-feel and banners                 */
+:root{--gsg-banner-bg:#1e3a8a;--gsg-body-bg:#f5f6f8;--gsg-text:#4b5563;}                          /* Theme vars        */
+.md-header{background:var(--gsg-banner-bg)!important;}                                           /* Header color      */
+.md-footer{background:var(--gsg-banner-bg)!important;}                                           /* Footer color      */
+.md-main{background:var(--gsg-body-bg)!important;}                                               /* Page body color   */
+.md-content{color:var(--gsg-text);}                                                              /* Text color        */
+.md-header,.md-footer{min-height:80px;}                                                          /* Banner height     */
+.right-half-image{float:right;width:50%;margin-left:20px;}                                       /* Right image       */
+.clearfix::after{content:"";display:block;clear:both;}                                           /* Clear floats      */
+CSS
+
+write_md() {
+  path="$1"; title="$2"; body="${3:-}"
+  mkdir -p "$(dirname "$path")"
+  cat > "$path" << EOF
+---
+title: $title
+---
+
+# $title
+
+> Status: _placeholder outline_
+
+## Purpose
+- What this page covers and why it matters.
+
+## Key Concepts
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Step-by-Step
+1) Step one
+2) Step two
+3) Step three
+
+## Configuration
+- Files, snippets, and parameters.
+
+## Verification
+- How to confirm it works.
+- Common pitfalls & fixes.
+
+## Next Steps
+- Where to go from here.
+
+$body
+EOF
+}
+
+write_md docs/index.md "Home" "<div class='clearfix'>
+<img src='assets/images/logo.svg' class='right-half-image' alt='GSG Logo'/>
+**Welcome to Guru Server Group Docs.** Use the top navigation to explore Business Plan, 5-Server Group, and Blog.
+</div>
+
+- Start with **Architecture Overview** for a guided tour.
+- Visit **Blog** for updates.
+"
+
+write_md docs/about/index.md "About"
+write_md docs/team/index.md "Our Team"
+write_md docs/about/contact.md "Contact"
+
+write_md docs/plan/01-executive-summary.md "Executive Summary"
+write_md docs/plan/02-market-and-audience.md "Market & Audience"
+write_md docs/plan/03-services-and-pricing.md "Services & Pricing"
+write_md docs/plan/04-operations.md "Operations"
+write_md docs/plan/05-risk-and-compliance.md "Risk & Compliance"
+
+write_md docs/servers/00-architecture-overview.md "Architecture Overview"
+write_md docs/servers/10-web-haproxy-keepalived.md "Web Tier (HAProxy+Keepalived)"
+write_md docs/servers/20-nginx-reverse-proxy.md "NGINX Reverse Proxy"
+write_md docs/servers/30-app-tier-nextjs.md "App Tier (Node.js/Next.js)"
+write_md docs/servers/40-postgresql.md "Database Tier (PostgreSQL)"
+write_md docs/servers/45-pgbouncer.md "PgBouncer"
+write_md docs/servers/50-auth-rbac.md "Auth & RBAC"
+write_md docs/servers/60-monitoring-netdata.md "Monitoring (NetData)"
+write_md docs/servers/70-security-stack.md "Security Stack"
+write_md docs/servers/80-cicd-ansible.md "CI/CD & Ansible"
+write_md docs/servers/90-testing-disaster-recovery.md "Testing & Disaster Recovery"
+
+write_md docs/blog/index.md "Blog" "Create posts as files in **docs/blog/** with date prefixes (e.g., \`2025-09-17-first-post.md\`)."
+
+write_md docs/appendix/glossary.md "Glossary"
+write_md docs/appendix/naming-and-versioning.md "Naming & Versioning"
+write_md docs/appendix/references.md "References"
+
+echo "Scaffold complete."
+
+Quick-start commands (in VS Code terminal)
+# 01) Create and enter project folder
+mkdir gsg-mkdocs && cd gsg-mkdocs
+
+# 02) (Optional but recommended) Create venv
+python -m venv .venv && . .venv/Scripts/activate  # Windows PowerShell: .\.venv\Scripts\Activate.ps1
+
+# 03) Install MkDocs + Material + Blog plugin
+pip install mkdocs mkdocs-material mkdocs-blog-plugin
+
+# 04) Save mkdocs.yml (from above) into this folder
+# 05) Run the scaffold script to create docs/ tree
+#     Windows:
+#       PowerShell> Set-ExecutionPolicy -Scope Process Bypass
+#       PowerShell> .\scaffold.ps1
+#     Linux/macOS:
+#       bash scaffold.sh
+
+# 06) Serve locally
+mkdocs serve
+
+# 07) Build static site
+mkdocs build
+
+Notes on the requested styling
+
+Header/footer banners are set to 80 px via .md-header,.md-footer{min-height:80px;} in docs/assets/styles/extra.css.
+
+Light gray page body and medium-dark-gray text are also in extra.css.
+
+The right-half-image utility class lets you place an image on the right with a 20 px margin on the left. Example is already used on Home.
+
+If you want me to tailor the nav labels or add more outline sections (e.g., “HAProxy fault handling with PgBouncer/Drizzle ORM” or “Deployment playbooks”), say the word and I’ll extend the scaffold to match.

@@ -1,0 +1,6 @@
+The Purpose of This Folder.txt
+
+This folder will contain a number of Content Placeholder Files 
+that Rich will provide.  Rene will copy the contents from these 
+files and will paste that content into the final web page files. 
+ 

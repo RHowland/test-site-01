@@ -1,0 +1,77 @@
+GSG-Proc - Style a MkDocs Website v1.0.txt
+------------------------------------------
+
+The purpose of this document is to provide a step-by-step list of 
+commands for operations that are needed to style the MINIMAL 
+MkDocs website (created in an earlier procedure).
+
+Please refer to these AI docs for guidance:
+- "Style Website Pages 01 v1.0 - ChatGpt response.pdf"
+- "Style Website Pages 01 v1.0 - ChatGpt response.txt"
+
+- "Style Website Pages 01 v1.0 - Gemini response.pdf"
+- "Style Website Pages 01 v1.0 - Gemini response.txt"
+
+
+"GSG-Proc:"  = "GuruServerGroup Procedure"
+
+--------------------------------
+This document is part of this GitHub repo: 
+
+  gsg-gh-pages-site01 
+
+
+-------------------------------
+(show one or more URLs for articles or videos that provided the correct 
+ syntax for the commands in this procedure document)
+
+  (article or video title for source website 01)
+  (URL for source website 01)
+ 
+  (article or video title for source website 02) 
+  (URL for source website 02)
+
+
+(show any related urls such as GitHub repos if applicable)
+
+
+=====================================================================
+
+                Style the Minimal Website Procedure
+
+=====================================================================
+---------------------------------------------------------------------
+005 (operation description)  
+
+    a. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command:
+>   (full text for the command)
+
+
+
+    b. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command:
+>   (full text for the command)
+
+
+
+---------------------------------------------------------------------
+010 (operation description)
+
+    a. (provide one or two sentences that explain what the next 
+        command does and why it is important)
+
+    Windows command: 
+>   (full text for a Windows command)
+
+
+...
+
+
+---------------------------------------------------------------------
+(End of Document)
+

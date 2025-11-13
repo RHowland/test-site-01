@@ -1,0 +1,232 @@
+Style Website Pages 01 v1.0 - ChatGPT response.txt
+--------------------------------------------------
+
+ChatGPT Response:
+-----------------
+
+Goal: deliver a clean, 1200-px wide Material for MkDocs theme with precise light/dark color schemes, slim 24-px header/footer banners, and consistent page/button borders—plus setup steps you can drop into your project right now.
+
+OP01 — Add theme + palette in mkdocs.yml
+
+Use two named schemes so the user can toggle between your light/dark specs.
+
+# mkdocs.yml                                # Project config for Material MkDocs
+site_name: Guru Server Group Docs            # Site title shown in the header
+theme:                                       # Theme block for Material
+  name: material                             # Use Material for MkDocs
+  features:                                  # (Optional) common quality-of-life opts
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+    - toc.follow
+  palette:                                   # Define Light/Dark with custom scheme names
+    - scheme: gsg-light                      # Your Light mode identifier
+      toggle:
+        icon: material/weather-night         # Icon for switching to dark
+        name: Switch to dark mode            # Toggle tooltip
+    - scheme: gsg-dark                       # Your Dark mode identifier
+      toggle:
+        icon: material/weather-sunny         # Icon for switching to light
+        name: Switch to light mode           # Toggle tooltip
+
+extra_css:                                   # Attach your custom stylesheet(s)
+  - stylesheets/extra.css                    # Path under docs/
+
+OP02 — Create your stylesheet
+
+Create docs/stylesheets/extra.css and paste the following.
+Notes:
+
+We override via scheme selectors [data-md-color-scheme="…"] so the toggle just works.
+
+Material already uses Roboto; we explicitly request weight 500 for banner text.
+
+--gsg-* variables make borders/colors reusable across rules.
+
+/* docs/stylesheets/extra.css                # Custom site styles for GSG */
+
+/* ——————————————————————————————————————————
+   GLOBAL LAYOUT (applies to both schemes)
+   —————————————————————————————————————————— */
+
+/* 1) Constrain site to max 1200px */
+.md-grid{max-width:1200px;}                  /* Limit inner grid width to 1200px */
+
+/* 2) Make the “outside page” browser viewport color visible */
+html,body{background:#c0c0be;}               /* Light gray outside the page area */
+
+/* 3) Provide a subtle page border around the main content area */
+:root{
+  --gsg-border-light:#88888a;                /* Med dark gray for Light mode border */
+  --gsg-border-dark:#000000;                 /* Black for Dark mode border */
+}
+.md-main__inner{
+  box-shadow:none;                           /* Remove any theme shadows */
+  background:transparent;                    /* Let scheme rules control page bg */
+  border:1px solid transparent;              /* Base border; color set per scheme */
+  border-radius:6px;                         /* So border looks deliberate */
+}
+
+/* 4) Normalize button borders across variants */
+:root{
+  --gsg-button-border-light:#88888a;         /* Light mode button border color */
+  --gsg-button-border-dark:#000000;          /* Dark mode button border color */
+}
+.md-typeset .md-button,
+.md-typeset .md-button:focus,
+.md-typeset .md-button:hover{
+  border-width:1px;                          /* Ensure visible outline */
+  border-style:solid;                        /* Solid border for contrast */
+}
+
+/* ——————————————————————————————————————————
+   LIGHT SCHEME
+   —————————————————————————————————————————— */
+[data-md-color-scheme="gsg-light"]{
+  /* Body/page colors */
+  --md-default-bg-color:#d5d4d4;             /* Page background (very light gray) */
+  --md-default-fg-color:#88888a;             /* Page text (med dark gray) */
+
+  /* Reusable tokens */
+  --gsg-border:var(--gsg-border-light);      /* Page border color */
+  --gsg-button-border:var(--gsg-button-border-light);
+
+  /* Apply page background + border color */
+  /* Material paints main content inside .md-main; use an inner wrapper */
+}
+[data-md-color-scheme="gsg-light"] .md-main__inner{
+  background:var(--md-default-bg-color);     /* Light page background */
+  border-color:var(--gsg-border);            /* Light page border color */
+}
+[data-md-color-scheme="gsg-light"] .md-typeset{
+  color:var(--md-default-fg-color);          /* Light text color */
+}
+
+/* Header & footer banners */
+[data-md-color-scheme="gsg-light"] .md-header,
+[data-md-color-scheme="gsg-light"] .md-footer{
+  background:#e1e1e1;                        /* Requested banner background */
+  min-height:24px;                           /* Banner height */
+  height:24px;                               /* Force slim bar */
+}
+[data-md-color-scheme="gsg-light"] .md-header__inner,
+[data-md-color-scheme="gsg-light"] .md-footer__inner{
+  height:24px;                               /* Keep content aligned to 24px bar */
+}
+[data-md-color-scheme="gsg-light"] .md-header .md-header__title,
+[data-md-color-scheme="gsg-light"] .md-header .md-header__topic,
+[data-md-color-scheme="gsg-light"] .md-footer{
+  font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif; /* Roboto */
+  font-weight:500;                           /* Banner text weight 500 */
+  color:#88888a;                             /* Banner text color per spec */
+}
+
+/* Buttons */
+[data-md-color-scheme="gsg-light"] .md-typeset .md-button{
+  color:var(--md-default-fg-color);          /* Harmonize button text with page */
+  border-color:var(--gsg-button-border);     /* Border per spec */
+}
+
+/* ——————————————————————————————————————————
+   DARK SCHEME
+   —————————————————————————————————————————— */
+[data-md-color-scheme="gsg-dark"]{
+  --md-default-bg-color:#88888a;             /* Page background (med dark gray) */
+  --md-default-fg-color:#d5d4d4;             /* Page text (very light gray) */
+
+  --gsg-border:var(--gsg-border-dark);       /* Page border color */
+  --gsg-button-border:var(--gsg-button-border-dark);
+}
+[data-md-color-scheme="gsg-dark"] .md-main__inner{
+  background:var(--md-default-bg-color);     /* Dark page background */
+  border-color:var(--gsg-border);            /* Dark page border color */
+}
+[data-md-color-scheme="gsg-dark"] .md-typeset{
+  color:var(--md-default-fg-color);          /* Dark text color */
+}
+
+/* Header & footer banners */
+[data-md-color-scheme="gsg-dark"] .md-header,
+[data-md-color-scheme="gsg-dark"] .md-footer{
+  background:#e1e1e1;                        /* Same banner bg in dark mode */
+  min-height:24px;                           /* Banner height */
+  height:24px;                               /* Force slim bar */
+}
+[data-md-color-scheme="gsg-dark"] .md-header__inner,
+[data-md-color-scheme="gsg-dark"] .md-footer__inner{
+  height:24px;                               /* Keep content aligned to 24px bar */
+}
+[data-md-color-scheme="gsg-dark"] .md-header .md-header__title,
+[data-md-color-scheme="gsg-dark"] .md-header .md-header__topic,
+[data-md-color-scheme="gsg-dark"] .md-footer{
+  font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif; /* Roboto */
+  font-weight:500;                           /* Banner text weight 500 */
+  color:#d5d4d4;                             /* Banner text color per spec */
+}
+
+/* Buttons */
+[data-md-color-scheme="gsg-dark"] .md-typeset .md-button{
+  color:var(--md-default-fg-color);          /* Maintain contrast on dark */
+  border-color:var(--gsg-button-border);     /* Border per spec */
+}
+
+/* ——————————————————————————————————————————
+   OPTIONAL: Tighter header title spacing inside 24px bar
+   —————————————————————————————————————————— */
+.md-header .md-header__title{margin:0;}      /* Keep header text vertically centered */
+
+/* ——————————————————————————————————————————
+   OPTIONAL: Ensure full-width banners visually span 100%
+   —————————————————————————————————————————— */
+.md-header, .md-footer{width:100%;}          /* Explicit full width for clarity */
+
+OP03 — Put it in place (VS Code friendly steps)
+
+Create folders
+
+In your project root, ensure a docs/ folder exists.
+
+Create docs/stylesheets/ and add extra.css (above).
+
+Wire up CSS in mkdocs.yml
+
+Add the extra_css: block (shown in OP01).
+
+Leave palette exactly as shown; your CSS keys off those scheme names.
+
+Serve & verify locally
+
+# Windows PowerShell                           # Create/activate venv (if needed)
+python -m venv .venv                           # Create venv
+. .\.venv\Scripts\Activate.ps1                 # Activate venv
+pip install mkdocs-material                    # Install Material for MkDocs
+mkdocs serve                                   # Launch dev server (http://127.0.0.1:8000)
+
+
+Resize the browser: content column should max at ~1200px.
+
+Toggle theme using the sun/moon icon; verify page bg/text, borders, header/footer styling, and button borders in both modes.
+
+Check the browser “gutter” around the page is #c0c0be in both modes.
+
+OP04 — Typical Material settings you can keep “standard”
+
+You asked to “use typical website specs otherwise”—these are safe defaults most Material sites use (already active unless you change them):
+
+Typography: Material ships Roboto (400/700). You’re using 500 in banners via CSS; that’s fine.
+
+Content width: handled by .md-grid (we set 1200px).
+
+Link colors, code blocks, and tables: keep defaults unless you have brand colors.
+
+Navigation features in OP01 are common and non-intrusive.
+
+OP05 — Dev tips & gotchas (Jarvis-style)
+
+Prefer CSS variables + scheme selectors over !important. If a single component resists, add !important only on that rule.
+
+The 24-px header/footer is very slim; if nav items wrap, add fewer top-level items or raise to 32px.
+
+If you later add a primary color, do it in palette (primary/accent) and still keep your bg/text overrides in CSS—Material’s color system focuses on brand colors, not full surface tokens.
+
+To customize only the docs page (not the landing header), scope rules under .md-content or .md-typeset as needed.

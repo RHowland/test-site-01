@@ -1,0 +1,40 @@
+------------------------------------------------
+Config file 'mkdocs.yml' does not exist
+------------------------------------------------
+
+1. You run:
+
+   * `mkdocs serve`
+  
+2. Errors resemble:
+
+   Error: Config file 'mkdocs.yml' does not exist.
+
+Why it happens
+
+* Mkdocs requires a mkdocs.yml file in the project 
+  root directory
+
+How to avoid and fix on Windows 10 Pro (step-by-step)
+
+1. Use a clean venv and the right interpreter.
+
+   * In PowerShell:
+
+     'notepad mkdocs.yml'   #creates a mkdocs.yml file
+    
+   * In Mkdocs.yml:
+ 
+     "site_name: My Mkdocs Site"
+
+   * In root project directory:
+
+     'if (!(Test-Path .\docs)) { mkdir docs }'    
+     
+     #creates a 'docs' directory if it doesn't exist 
+     #It is good practice not to use 'mkdir docs as 
+     #in cases where developers are prone to using '--force'
+     #could inadvertantly remove the entire contents of the site      
+
+
+

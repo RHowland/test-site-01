@@ -1,0 +1,93 @@
+GSG-Proc - Install Material MkDocs v1.0.txt
+-------------------------------------------
+
+The purpose of this document is to serve as a temporary storage 
+location to contain about 10 - 15 "rough step-by-step procedures" 
+that are needed to develop the GuruServerGroup.com website 
+including: 
+
+- Create a Material MkDocs (MMkDocs) work environment
+- Display the website in a development environment
+- Do a light weight deployment test to GitHub Pages. 
+- Style the web pages
+- Create a mid-sized site with about 10 pages
+- Deploy the mid-sized site using a fully-qualified domain name (FQDN). 
+- Display the website 
+- Add AI generated "concept images" from Gamma.app
+- Add an "I am interested" web page to save names and emails 
+   in a database.  
+- And more...
+
+--------------------------------
+"GSG-Proc:"  = "GuruServerGroup Procedure"
+
+--------------------------------
+This document is part of this GitHub repo: 
+
+  https://github.com/RHowland/gsg-gh-pages-site01.git 
+
+
+-------------------------------
+Source Youtube Video and blog article.  These were provided by 
+James Willett.  
+
+  https://jameswillett.dev/getting-started-with-material-for-mkdocs/
+
+  https://www.youtube.com/watch?v=xlABhbnNrfI&t=572s
+
+-------------------------------
+Source GitHub repo for this project. This GitHub repo was 
+provided by James Willett.  
+
+  https://github.com/james-willett/material-mkdocs-youtube-2024.git
+
+
+=====================================================================
+
+                      (major operation title)
+
+=====================================================================
+Rene: replace the following placeholder statements with the real 
+      statements. 
+
+---------------------------------------------------------------------
+005 (sub-operation title)
+    (explanation of what this major operation does)
+    (explanation of why this major operation is needed)
+
+    ------------------------------------------------------
+    a. (title for first sub-operation)
+       (sentence stateing what this sub-operation does and why it is 
+        needed)
+
+>   (text for the command to be entered)
+
+
+    ------------------------------------------------------
+    b. (title for the second sub-operation)
+       (sentence stateing what this sub-operation does and why it is 
+        needed)
+
+>   (text for the command to be entered)
+ 
+
+    ------------------------------------------------------
+    c. (title for the third sub-operation)
+
+
+>   (text for the command to be entered)
+
+    ...
+
+=====================================================================
+010 (Title for next major operation)
+
+
+    ...
+
+
+
+
+=====================================================================
+(End of Document)
+

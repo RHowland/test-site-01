@@ -1,0 +1,71 @@
+AI - Styles v1.0.txt
+--------------------
+
+2025-09-27 RJH
+
+The purpose of this document is to provide CSS values to 
+Rene to style our GuruServerGroup.com website to be developed 
+using Material MkDocs app. 
+
+Here are the CUSTOM CSS specs that I need to apply to this 
+this website:
+
+I would like the width for this website to be a max width of 
+1200 pixels. 
+
+I want to enable these light and dark mode colors: 
+- Light Mode colors: 
+  - web-browser-viewport 
+    background color            : #c0c0be  (light gray)
+    (for all of the empty space 
+     around the entire web page) 
+
+  - page background color: #d5d4d4 (very light gray)
+
+  - page text color      : #88888a (med dark gray)
+
+  - header and footer banners: 
+    - background color: #e1e1e1 (med dark blue)
+    - banner height   : 24 px
+    - banner width    : 100%
+
+  - header and footer banner text: 
+    - font        : roboto, 
+    - font weight : 500 
+    - text color  : #88888a (med dark gray)
+  - borders: 
+    - page border color   : #88888a (med dark gray)
+    - button border color : #88888a (med dark gray)
+
+- Dark Mode colors: 
+  - web-browser-viewport 
+    background color            : #c0c0be  (light gray)
+    (for all of the empty space 
+     around the entire web page) 
+
+  - page background color: #88888a (med dark gray) 
+
+  - page text color      : #d5d4d4 (very light gray)
+
+  - header and footer banners: 
+    - background color: #e1e1e1 (med dark blue)
+    - banner height   : 24 px
+    - banner width    : 100%
+
+  - header and footer banner text: 
+    - font        : roboto, 
+    - font weight : 500 
+    - text color  : #d5d4d4 (very light gray)
+
+  - borders: 
+    - page border color   : #000000 (black)
+    - button border color : #000000 (black)
+
+
+Other than the above css specs, I would like to use the typical 
+website specs that are normally used by other developers to 
+develop MMkDocs websites. 
+
+In the GSGSite01 website, please write these CSS styles in an 
+orderly manner that is typically used for MkDocs websites. 
+
